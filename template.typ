@@ -389,6 +389,10 @@
       v(16pt)
       _accent-rule()
       v(23pt)
+      let outline-page(body) = text(
+        font: ui-font, size: 9pt, weight: "regular", style: "normal", fill: muted,
+        number-type: "lining", number-width: "tabular", body,
+      )
       set outline.entry(fill: none)
       show outline.entry.where(level: 1): it => {
         let el = it.element
@@ -397,7 +401,7 @@
             link(el.location(), grid(
               columns: (1fr, auto), column-gutter: 10pt, align: horizon,
               text(size: 12pt, weight: "semibold", fill: midnight, el.body),
-              text(font: ui-font, size: 9pt, fill: muted, it.page()),
+              outline-page(it.page()),
             )))
         } else if el.numbering == none {
           let part-number = _part-counter.at(el.location()).first()
@@ -412,7 +416,7 @@
               text(size: 18pt, fill: blue,
                 str(counter(heading).at(el.location()).first())),
               text(size: 12pt, weight: "semibold", fill: midnight, it.body()),
-              text(font: ui-font, size: 9pt, fill: muted, it.page()),
+              outline-page(it.page()),
             )))
         }
       }
@@ -420,7 +424,9 @@
         set text(size: 10pt, fill: muted)
         block(above: 6pt, below: 6pt,
           link(it.element.location(), it.indented(
-            text(fill: blue, it.prefix()), it.inner(), gap: 10pt)))
+            text(fill: blue, it.prefix()),
+            [#it.body()#h(1fr)#box(outline-page(it.page()))],
+            gap: 10pt)))
       }
       outline(title: none, indent: 38pt, depth: 2)
     })
@@ -559,6 +565,8 @@
 #let Ext = "Ext"
 #let Tor = "Tor"
 #let Nm = "Nm"
+#let Gr = "Gr"
+#let Hilb = "Hilb"
 #let Assem = "Assem"
 #let opp = "op"
 #let pr = "pr"
@@ -608,6 +616,9 @@
 #let CAlg = $bold(sans("CAlg"))$
 #let Mon = $bold(sans("Mon"))$
 #let CMon = $bold(sans("CMon"))$
+#let AlgSp = $bold(sans("AlgSp"))$
+#let DMSt = $bold(sans("DM"))$
+#let ArtSt = $bold(sans("ArtSt"))$
 
 #let cat(name) = $bold(sans(name))$
 
