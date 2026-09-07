@@ -21,4 +21,10 @@
 
 #include "chapters/c003.typ"
 
+#include "chapters/c004.typ"
+
+#include "chapters/c005.typ"
+
+#include "chapters/c006.typ"
+
 #references("references.bib")

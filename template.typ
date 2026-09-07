@@ -567,6 +567,7 @@
 #let Nm = "Nm"
 #let Gr = "Gr"
 #let Hilb = "Hilb"
+#let Quot = "Quot"
 #let Assem = "Assem"
 #let opp = "op"
 #let pr = "pr"
@@ -617,7 +618,7 @@
 #let Mon = $bold(sans("Mon"))$
 #let CMon = $bold(sans("CMon"))$
 #let AlgSp = $bold(sans("AlgSp"))$
-#let DMSt = $bold(sans("DM"))$
+#let DMSt = $bold(sans("DMSt"))$
 #let ArtSt = $bold(sans("ArtSt"))$
 
 #let cat(name) = $bold(sans(name))$

@@ -64,7 +64,7 @@ $ h_M:(Sch_k)^opp->Set, quad T |-> M(T) $
 
 这提示我们也可以直接从分类问题出发. 指定所研究的族及其拉回后, 令
 $ F(T):={"以 " T " 为参数的族的同构类"} $
-拉回使它成为反变函子 $F:(Sch_k)^opp->Set$, 称为*精模函子*. 在上述例子中, 点对应单个对象, 一般的态射则对应随参数变化的族.
+拉回使它成为反变函子 $F:(Sch_k)^opp->Set$, 称为*模函子*. 在上述例子中, 点对应单个对象, 一般的态射则对应随参数变化的族.
 
 === Yoneda 引理与万有族
 
@@ -224,8 +224,8 @@ $ Hom_V (T,U)->Hom_V (T_0,U) $
 
 这里允许基底是任意概形 $S$, 并记 $Sch_S:=Sch slash S$.
 
-#definition(title:[精模函子])[
-  一个*精模函子* (fine moduli functor) 是一个反变函子
+#definition(title:[模函子与精模空间])[
+  一个*模函子* (moduli functor) 是一个反变函子
   $ F:(Sch_S)^opp->Set $
   通常描述一类代数对象及其随参数变化的族. 若存在一个代数空间 $M$ 表示这个函子, 即有自然同构
   $ F tilde.eq h_M, quad h_M (T)=Hom_S (T,M) $
@@ -364,9 +364,9 @@ $ Y tilde.eq T times_M U $
 ] <lem-grassmann-splitting>
 
 #proof[
-  任取 $t in T$, 其在某个开邻域 $U$ 上取平凡化
+  任取 $t in T$, 取一个使 $cal(Q)$ 平凡的仿射开邻域 $U$, 即
   $ cal(Q)|_U tilde.eq cal(O)^(plus.o r)_U $
-  因为 $q|_U$ 是拟凝聚层的满射. 由 $U$ 仿射, 截面函子是正合的, 于是保持满射性, 从而
+  因为 $U$ 仿射, 拟凝聚层取截面保持正合, 所以 $q|_U$ 给出满射
   $ Gamma(U,cal(E)_T) ->> Gamma(U,cal(Q)) tilde.eq Gamma(U,cal(O)_U)^(plus.o r) $
   在右边取标准基 $e_1,...,e_r$, 取提升
   $ v_i in Gamma(U,cal(E)_T), quad q(v_i)=e_i $
@@ -587,10 +587,10 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
 
 #definition(title:[Hilbert模函子])[
   固定一个有限表示的概形态射 $X->S$, 对 $T->S$ 记 $X_T=X times_S T$. 定义 *Hilbert模函子* 为
-  $ frak("Hilb")_(X slash S) (T)={Z subset X_T " 闭子概形" | Z->T " 平坦, 固有且有限表示"} $
+  $ frak("Hilb")_(X slash S) (T)={Z subset X_T " 闭子概形" | Z->T " 平坦, 紧合且有限表示"} $
   对任意 $S$-态射 $h:T'->T$, 规定
   $ frak("Hilb")_(X slash S) (h):Z |-> Z times_T T' subset X_(T') $
-  闭嵌入, 平坦性, 固有性与有限表示性都在基变换下保持, 因而得到反变函子 $frak("Hilb")_(X slash S):(Sch_S)^opp->Set$. 参见 @Stacks26[Tag 0CZX].
+  闭嵌入, 平坦性, 紧合性与有限表示性都在基变换下保持, 因而得到反变函子 $frak("Hilb")_(X slash S):(Sch_S)^opp->Set$. 参见 @Stacks26[Tag 0CZX].
 ] <def-hilbert-functor>
 
 #lemma(title:[Hilbert模对象没有非平凡自同构])[
@@ -605,7 +605,7 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
 #remark(title:[它参数化什么])[
   这里记录的是*嵌入在 $X_T$ 中的闭子概形族*. 两个抽象同构的概形, 若在 $X_T$ 中的位置不同, 仍是不同的对象. 等价地, 一个对象由其理想层 $cal(I)_Z subset cal(O)_(X_T)$ 确定.
 
-  当 $X->S$ 射影时, $Z->T$ 自动固有, 所以只需另要求平坦且有限表示. 平坦性是对整个族的要求, 并不要求每条纤维都光滑或约化.
+  当 $X->S$ 射影时, $Z->T$ 自动紧合, 所以只需另要求平坦且有限表示. 平坦性是对整个族的要求, 并不要求每条纤维都光滑或约化.
 ]
 
 #definition(title:[固定Hilbert多项式])[
@@ -648,7 +648,7 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
   两点合到了一处, 长度仍为 $2$. 若只取约化后的点, 长度就只剩 $1$ 了. *重数和非约化结构正是平坦极限要留下的信息*. 将方程齐次化为 $x(x-t y)=0$, 就得到 $PP^1_(k[t])$ 中Hilbert多项式恒为 $2$ 的族.
 ] <ex-hilbert-collision>
 
-此外, 闭子概形的理想层及其商可以作 fpqc 下降, 平坦性, 固有性与有限表示性也可如此检验. 所以Hilbert模函子是 fpqc 层; 这保证局部给出的族能够粘合. 参见 @Stacks26[Tags 082L, 0CZX].
+此外, 闭子概形的理想层及其商可以作 fpqc 下降, 平坦性, 紧合性与有限表示性也可如此检验. 所以Hilbert模函子是 fpqc 层; 这保证局部给出的族能够粘合. 参见 @Stacks26[Tags 082L, 0CZX].
 
 === 用统一正则性留下有限个数据
 
@@ -734,7 +734,7 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 余核与任意拉回相容, 所以这个构造对族同样有效. 但 $Z_G->G$ 一般还不平坦, 纤维的Hilbert多项式也未必是 $P$. 我们要从 $G$ 中取出恰好满足要求的部分.
 
 #theorem(title:[前置定理: 泛平坦分层])[
-  设 $Y->B$ 射影, $B$ 为Noetherian概形, $cal(F)$ 是 $Y$ 上的凝聚层, 并固定相对很丰富线丛来计算Hilbert多项式. 则存在有限个局部闭子概形 $B_Q subset B$, 以出现的纤维Hilbert多项式 $Q$ 标号, 满足:
+  设 $Y->B$ 射影, $B$ 为Noetherian概形, $cal(F)$ 是 $Y$ 上的凝聚层, 并固定相对极丰沛线丛来计算Hilbert多项式. 则存在有限个局部闭子概形 $B_Q subset B$, 以出现的纤维Hilbert多项式 $Q$ 标号, 满足:
 
   任意态射 $T->B$ 经过 $B_Q$, 当且仅当 $cal(F)_T$ 对 $T$ 平坦, 且每条纤维的Hilbert多项式都是 $Q$.
 
@@ -784,14 +784,14 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 ] <thm-hilbert-projective-space>
 
 #proof[
-  由 @thm-hilbert-locally-closed, $H slash S$ 有限型且分离. @prop-hilbert-dvr-extension 与Noetherian情形的赋值判据说明 $H slash S$ 固有, 参见 @Stacks26[Tag 0208].
+  由 @thm-hilbert-locally-closed, $H slash S$ 有限型且分离. @prop-hilbert-dvr-extension 与Noetherian情形的赋值判据说明 $H slash S$ 紧合, 参见 @Stacks26[Tag 0208].
 
-  因为 $G slash S$ 分离, $H->G$ 可分解为闭的图像态射 $H->H times_S G$, 再接一个固有投影, 所以它也固有. 固有的局部闭嵌入就是闭嵌入, 参见 @Stacks26[Tag 01IQ]. 最后复合 @thm-plucker-closed-immersion, 得到
+  因为 $G slash S$ 分离, $H->G$ 可分解为闭的图像态射 $H->H times_S G$, 再接一个紧合投影, 所以它也紧合. 紧合的局部闭嵌入就是闭嵌入, 参见 @Stacks26[Tag 01IQ]. 最后复合 @thm-plucker-closed-immersion, 得到
   $ H -> PP_S (and.big^(P(m)) V_m) $
   的闭嵌入.
 ]
 
-这条证明的顺序是: 先由泛平坦分层得到有限型概形, 再用赋值判据证明固有, 最后得到射影性. 构造的完整版本见 @Nit05[第 5 节].
+这条证明的顺序是: 先由泛平坦分层得到有限型概形, 再用赋值判据证明紧合, 最后得到射影性. 构造的完整版本见 @Nit05[第 5 节].
 
 现在回到给定的闭嵌入 $X subset PP_S^N$. 还需把"候选子概形落在 $X$ 内"写成闭条件.
 
@@ -824,11 +824,11 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 
   对 $q>=m$, $cal(E)_q=p_* cal(O)_(cal(Z)) (q)$ 局部自由, 秩为 $P(q)$, 且与任意基变换相容. 特别地, 线丛
   $ lambda_m:=det cal(E)_m $
-  是Grassmann-Plücker线丛的拉回, 因而对 $H slash S$ 相对很丰富.
+  是Grassmann-Plücker线丛的拉回, 因而对 $H slash S$ 相对极丰沛.
 ] <prop-hilbert-universal-polarization>
 
 #proof[
-  万有族对应于 $id_H$, 这正是 @prop-yoneda-family. 局部自由性由 @prop-hilbert-degree-quotient 得到, 而 $lambda_m$ 的描述来自 @lem-plucker-line-bundle. 因为构造中的 $H->G$ 是闭嵌入, 拉回的线丛相对很丰富.
+  万有族对应于 $id_H$, 这正是 @prop-yoneda-family. 局部自由性由 @prop-hilbert-degree-quotient 得到, 而 $lambda_m$ 的描述来自 @lem-plucker-line-bundle. 因为构造中的 $H->G$ 是闭嵌入, 拉回的线丛相对极丰沛.
 ]
 
 #remark[
@@ -855,14 +855,14 @@ Hilbert模函子本身只依赖 $X slash S$. 选定 $cal(O)_X (1)$ 后才有固�
 
   若 $Y subset X$ 为闭子概形, 则 $Hilb_(Y slash S)->Hilb_(X slash S)$ 是闭嵌入. 若 $U subset X$ 为开子概形, 则
   $ Hilb_(U slash S)->Hilb_(X slash S) $
-  是开嵌入; 这里 $U$ 中的族仍须对参数概形固有.
+  是开嵌入; 这里 $U$ 中的族仍须对参数概形紧合.
 ] <prop-hilbert-open-closed>
 ]
 
 #proofsketch[
   由 @prop-hilbert-flat-polynomial, 任意参数概形 $T$ 按纤维的多项式分成开闭部分, 每一部分上的族对应一个 $Hilb^P$ 的态射, 合起来即得到到上述不交并的态射. 闭嵌入的结论由 @prop-hilbert-closed-ambient 得到.
 
-  对开子概形, 在每个 $Hilb^P$ 上取万有族与 $(X without U) times_S Hilb^P$ 相交的闭集. 它到 $Hilb^P$ 的像是闭的, 因为万有族固有. 去掉这个像, 剩下的恰好参数化完全落在 $U$ 内的族. 参见 @Stacks26[Tag 0DPE].
+  对开子概形, 在每个 $Hilb^P$ 上取万有族与 $(X without U) times_S Hilb^P$ 相交的闭集. 它到 $Hilb^P$ 的像是闭的, 因为万有族紧合. 去掉这个像, 剩下的恰好参数化完全落在 $U$ 内的族. 参见 @Stacks26[Tag 0DPE].
 ]
 
 #remark(title:[结论的适用范围])[
@@ -897,3 +897,96 @@ $ [Z] |-> [V_m ->> H^0 (Z,cal(O)_Z (m))] $
   当 $d=2$ 时, 两点碰合的族 $x(x-t)=x^2-t x$ 对应系数空间中的直线 $(a_0,a_1)=(0,-t)$. 所谓退化, 在这里就是沿这条直线走到原点; 原点上方的万有族纤维是 $Spec(k[x] slash (x^2))$.
 ]
 ]
+
+== Quot概形
+
+Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成一个固定的凝聚层 $cal(E)$, 就得到 *Quot模问题*: 让 $cal(E)$ 的商随参数平坦地变化. 它的构造基本沿用上一节, 这里只补充变化的部分.
+
+=== 模函子与熟悉的例子
+
+仍设 $S$ 为Noetherian概形, 固定闭嵌入 $X subset PP_S^N$, 记 $cal(L)=cal(O)_X (1)$, 并固定 $X$ 上的凝聚层 $cal(E)$ 与多项式 $P in QQ[d]$.
+
+#definition(title:[Quot模函子])[
+  对任意 $T->S$, 记 $cal(E)_T$ 为 $cal(E)$ 在 $X_T$ 上的拉回. 让 $cal(F)$ 遍历 $X_T$ 上有限表示且对 $T$ 平坦的拟凝聚层, 定义
+  $ frak(Quot)_(cal(E) slash X slash S)^P (T)={q:cal(E)_T->>cal(F) | P_(cal(F)_t)=P " 对所有 " t in T} slash tilde.eq $
+  多项式相对于 $cal(L)_t$ 计算. 两个商 $q,q'$ 等价, 指存在同构 $alpha:cal(F)->^~cal(F)'$ 使 $alpha compose q=q'$. 沿 $h:T'->T$ 拉回商映射, 就得到态射上的作用. 参见 @Stacks26[Tag 09TR].
+
+  省去多项式条件, 得到完整函子 $frak(Quot)_(cal(E) slash X slash S)$. 这里 $X slash S$ 射影, 商层的支撑自动对 $T$ 紧合; 在非射影环境中, 需另加这个条件.
+] <def-quot-functor>
+
+#remark(title:[商映射也是数据])[
+  分类的是 $cal(E)_T->>cal(F)$ 整个商, 而非仅仅 $cal(F)$ 的同构类. 若 $alpha compose q=q$, 由满射可消去 $q$, 得到 $alpha=id_(cal(F))$. 所以相容的自同构只有恒等.
+
+  平坦性是对 $cal(F)$ 相对于参数 $T$ 的要求, $cal(F)$ 在 $X_T$ 上未必局部自由. 例如 $cal(O)_Z$ 就可以有较小的支撑.
+]
+
+#block(breakable: false)[
+#example(title:[Hilbert与Grassmann都是Quot])[
+  当 $cal(E)=cal(O)_X$ 时, 商的核是理想层, 商便是相应闭子概形的结构层. 因而
+  $ frak(Quot)_(cal(O)_X slash X slash S)^P tilde.eq frak(Hilb)_(X slash S)^P $
+  参见 @Stacks26[Tag 0D00].
+
+  当 $X=S$, $cal(E)$ 有限局部自由, $P equiv r$ 时, 有限表示的平坦商正是秩 $r$ 的局部自由商, 所以
+  $ frak(Quot)_(cal(E) slash S slash S)^r tilde.eq frak(Gr)_r (cal(E)) $
+  这就回到了 @thm-grassmann-representability.
+]
+]
+
+=== 沿用Hilbert的构造
+
+#theorem(title:[Grothendieck的Quot存在定理])[
+  上述函子由射影 $S$-概形 $Q=Quot_(cal(E) slash X slash S)^P$ 表示, 即对每个 $T->S$ 有自然双射
+  $ Hom_S (T,Q) tilde.eq frak(Quot)_(cal(E) slash X slash S)^P (T) $
+  参见 @Nit05[定理 5.1].
+] <thm-quot-representability>
+
+#proofsketch[
+  *先处理自由层.* 设 $X=PP_S^N$, $cal(E)=cal(O)^(plus.o b)$. @Stacks26[Tag 08AG] 已经对这种源给出了统一正则性界. 取足够大的 $m$, 记
+  $ f_T:PP_T^N->T, quad V_m=(f_S)_* cal(O)^(plus.o b) (m) tilde.eq cal(O)_S^(plus.o v_m), quad v_m=b binom(N+m,N) $
+  对平坦商 $q:cal(O)_(PP_T^N)^(plus.o b)->>cal(F)$, 令 $cal(K)=ker q$. 与 @prop-hilbert-degree-quotient 和 @prop-hilbert-reconstruction 相同, 有
+  $ 0 -> (f_T)_* cal(K)(m) -> V_(m,T) -> (f_T)_* cal(F)(m) -> 0 $
+  右端局部自由且秩为 $P(m)$, 与基变换相容; 左端的截面生成 $cal(K)(m)$. 因而这个商唯一恢复原来的 $q$.
+
+  *在Grassmann概形上取平坦分层.* 令 $G=Gr_(P(m)) (V_m)$, 万有核为 $cal(K)_m$. 定义候选商层
+  $ cal(F)_G=coker(f_G^* cal(K)_m times.o cal(O)(-m) -> cal(O)_(PP_G^N)^(plus.o b)) $
+  取 @thm-projective-flattening 中多项式为 $P$ 的部分 $H subset G$. @thm-hilbert-locally-closed 中的往返论证原样适用, 所以 $H$ 表示自由层的Quot函子.
+
+  *用DVR上的唯一延拓得到闭嵌入.* 给定 $Spec R->S$, 其中 $R$ 为DVR, 分式域为 $K$. 对一般纤维上的商 $cal(E)_K->>cal(F)_K$, 记 $j:X_K->X_R$, 定义
+  $ cal(F)_R=Im(cal(E)_R -> j_* cal(F)_K) $
+  这是凝聚商层, 且没有 $R$-挠元, 因而对 $R$ 平坦, Hilbert多项式仍为 $P$. 任何平坦延拓都嵌入 $j_* cal(F)_K$, 所以必是这个像. 于是与 @thm-hilbert-projective-space 相同, $H->G$ 是闭嵌入. 参见 @Stacks26[Tag 0DM4].
+
+  *一般凝聚层只需再加关系.* 将 $cal(E)$ 沿 $i:X->PP_S^N$ 推前. 在底的仿射开集上, 取满射
+  $ cal(O)^(plus.o b) ->> (i_* cal(E))(a) $
+  商能经过右边, 当且仅当这条满射的核在商中为零. 用 @prop-hilbert-closed-ambient 的高次直接像与零态射条件, 得到自由层Quot概形的闭子概形. 扭曲 $a$ 时, 多项式相应改为 $d |-> P(d+a)$; 再扭回即可. 参见 @Stacks26[Tags 0DP4, 0DP5].
+
+  各个仿射开集上的构造由万有性粘合. 高次万有商的行列式线丛也相容地粘合, 给出相对极丰沛线丛, 从而得到射影性. 一般情形的细节见 @Nit05[第 5 节].
+]
+
+#block(breakable: false)[
+=== 万有商与基本性质
+
+#proposition(title:[万有商及基变换])[
+  记 $Q=Quot_(cal(E) slash X slash S)^P$, $p:X times_S Q->Q$. 在 $X times_S Q$ 上存在万有正合列
+  $ 0 -> cal(K)_"univ" -> cal(E)_Q ->> cal(F)_"univ" -> 0 $
+  其中 $cal(F)_"univ"$ 对 $Q$ 平坦. 每个 $T$ 上的商都由它沿唯一的 $T->Q$ 拉回得到, 相容同构也唯一. 因而 $Q$ 是精模空间.
+
+  对任意 $S'->S$, 有典范同构
+  $ Quot_(cal(E) slash X slash S)^P times_S S' tilde.eq Quot_(cal(E)_(S') slash X_(S') slash S')^P $
+  万有正合列也随之拉回. 对足够大的 $m$, $p_* cal(F)_"univ" (m)$ 局部自由, 秩为 $P(m)$, 与基变换相容; 其行列式给出上述构造中的极化.
+] <prop-quot-universal-base-change>
+]
+
+#proof[
+  万有商对应 $id_Q$, 基变换公式由 Yoneda 引理得到. 商层对 $Q$ 平坦, 保证拉回正合列仍正合; 高次直接像的性质仍来自上同调与基变换.
+]
+
+平坦商层的Hilbert多项式也局部常值, 证明仍用 @prop-hilbert-flat-polynomial 中的 Euler 示性数. 所以完整Quot概形是各个 $Quot^P$ 的不交并, 每一项开闭, 但整个不交并未必有限型. 对开子概形 $U subset X$, 商层的支撑完全落在 $U$ 内是开条件. 参见 @Stacks26[Tag 0DM1].
+
+#proposition(title:[一点附近的一阶变化])[
+  设 $S=Spec k$, 点 $[q] in Q(k)$ 对应正合列 $0->cal(K)->cal(E)->>cal(F)->0$. 则
+  $ T_([q]) Q tilde.eq Hom_(cal(O)_X) (cal(K),cal(F)) $
+  这里是层态射组成的 $k$-向量空间. 这与Grassmann的切空间公式相同: 一阶变化由"核到商"的映射描述. 参见 @Stacks26[Tag 0CZV].
+] <prop-quot-tangent>
+
+在域上构造层的模空间时, 常先把层写成一个固定层的商. 例如选定 $cal(F)(a)$ 的一组生成截面, 就得到 $cal(O)_X^(plus.o b) (-a)->>cal(F)$, 从而在Quot概形上研究它的变化. 这里还记着所选的商映射; 若最终只想分类层本身, 就需要进一步处理更换这些生成截面的等同.
+
