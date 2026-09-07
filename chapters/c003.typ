@@ -772,8 +772,8 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 ] <prop-hilbert-dvr-extension>
 
 #proof[
-  取 $Z_K$ 在 $PP_R^N$ 中的概形论闭包. 若 $pi.alt$ 是一致化参数, 在标准仿射开集 $Spec B$ 上, 设一般纤维的理想为 $J_K subset B[1/pi.alt]$, 则闭包的理想是 $J=B inter J_K$. 因而
-  $ B slash J -> B[1/pi.alt] slash J_K $
+  取 $Z_K$ 在 $PP_R^N$ 中的概形论闭包. 若 $pi.alt$ 是一致化参数, 在标准仿射开集 $Spec B$ 上, 设一般纤维的理想为 $J_K subset B[1\/pi.alt]$, 则闭包的理想是 $J=B inter J_K$. 因而
+  $ B slash J -> B[1\/pi.alt] slash J_K $
   是单射. 右边没有 $R$-挠元, 所以左边也没有; DVR上的无挠模平坦, 故闭包对 $R$ 平坦. 它还是射影且有限表示的, 由 @prop-hilbert-flat-polynomial, 特殊纤维的多项式仍为 $P$.
 
   若另一个延拓也平坦, 它的坐标环同样没有 $R$-挠元, 因而理想必是 $J_K$ 的收缩 $B inter J_K$. 这就证明了唯一性. Hilbert函子的赋值判据也见 @Stacks26[Tag 0DM8].
