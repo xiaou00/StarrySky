@@ -54,7 +54,7 @@
     column-gutter: 24pt,
     align: center,
     [
-      #fletcher.diagram(
+      #book-diagram(
         spacing: 25pt, cell-size: 0pt, node-inset: 5pt,
         {
           fletcher.edge((0, 0), (1, 0), marks: "->")
@@ -70,7 +70,7 @@
       \ 推出方块
     ],
     [
-      #fletcher.diagram(
+      #book-diagram(
         spacing: 25pt, cell-size: 0pt, node-inset: 5pt,
         {
           fletcher.edge((0, 0), (1, 0), marks: "->")
@@ -502,8 +502,6 @@ $ tilde(E)_n (x) tilde.eq pi_n underline(Map)_(Sp) (SS,E smash Sigma^oo x) tilde
 
 #table(
   columns: (1fr, 1fr),
-  inset: 7pt,
-  stroke: .4pt + rule-c,
   table.header([普通代数], [稳定同伦论]),
   [Abel群 $A in Ab$], [谱 $E in Sp$],
   [$Hom_(Ab) (A,B)$], [映射谱 $underline(Map)_(Sp) (E,F)$],
@@ -663,6 +661,40 @@ $ mu:A smash A->A, quad eta:SS->A $
 
 所以, 环谱并没有把普通环排除在外: 普通环正好是没有其他同伦次数的那一层. 对一般环谱, $pi_* A$ 则只是可以读出的代数数据, 并不包含全部高阶乘法信息.
 
+=== 连通与非连通: 信息从哪一层开始
+
+#definition(title: "连通谱与非连通谱")[
+  回顾 @prop-spectrum-heart, 谱 $E$ 称为*连通* (connective), 若
+  $ pi_i E=0 quad (i<0) $
+  若某个负次同伦群非零, 则称它为*非连通谱* (nonconnective). 环谱的连通性指其*底层谱*的连通性, 与选择 $EE_1$ 还是 $EE_oo$ 乘法无关. 例如球谱 $SS$ 与普通环给出的 $H R$ 都连通, 但 $SS$ 并不离散.
+
+  连通性只限制负次数; 正次同伦群仍然可以很丰富. 离散则要求除零次外全部为零. 参见 @Lur17[命题 1.4.3.6, 第 7.1.3 节].
+] <def-connective-nonconnective-spectra>
+
+最容易的例子来自移位. 取非零普通环 $R$, 由 $pi_i (E[n]) tilde.eq pi_(i-n) E$ 得到下表; 表中未列出的同伦群全部为零.
+
+#table(
+  columns: (1fr, 1.5fr, 1.5fr),
+  table.header([谱], [唯一非零的同伦群], [连通性]),
+  [$H R$], [$pi_0=R$], [连通且离散],
+  [$H R[1]$], [$pi_1=R$], [连通, 不离散],
+  [$H R[-1]$], [$pi_(-1)=R$], [非连通],
+)
+
+这里移位的是底层谱, 并没有给移位后的对象指定含幺环谱结构. 直观上, $[1]$ 把信息向高次数移动, $[-1]$ 则向低次数移动. 因此连通谱对悬挂封闭, 对取环路却未必封闭. 非连通也不意味着负次数无界: $H R[-1]$ 只有一个非零次数.
+
+#remark(title: "负次同伦怎样看见")[
+  这里的"连通"是*次数条件*. 例如 $H R$ 连通, 但 $Omega^oo H R$ 是离散生象 $R$, 通常有很多连通分支.
+
+  第零层 $Omega^oo E$ 只能看到非负次同伦群:
+  $ pi_i (Omega^oo E) tilde.eq pi_i E quad (i>=0) $
+  因而 $Omega^oo (H R[-1]) tilde.eq *$, 尽管 $H R[-1]$ 不是零谱. 要看负次信息, 就把谱移位后再看第零层:
+  $ pi_0 (Omega^oo (E[q])) tilde.eq pi_(-q) E quad (q>0) $
+  在 $Omega$-谱的描述中, $Omega^oo (E[q])$ 正是第 $q$ 层. 所以负次同伦仍由普通生象记录, 只是需要看后面的层; 这也是为什么不能只用第零层代替整个谱.
+]
+
+对连通环谱, 可以先从普通环 $pi_0 A$ 开始, 再逐层记录 $pi_1 A,pi_2 A,dots$ 及它们之间的相容数据. 一般环谱还允许零次以下的信息. 后面会看到, *正次上同调恰好记录在谱的负次数中*, 因而计算上同调时会自然遇到非连通谱.
+
 === 截断、等价与基本构造
 
 #proposition(title: "环谱的连通覆盖与 Postnikov 截断")[
@@ -722,6 +754,14 @@ $ A <- tau_(>=0) A -> H(pi_0 A) $
   因而有 $a ∪ b in A^(p+q) (x)$, 并满足
   $ a ∪ b=(-1)^(p q) b ∪ a $
   取 $A=H R$, $R$ 为普通交换环, 就恢复普通上同调的杯积. 若 $A$ 只有 $EE_1$ 结构, 同样得到结合的杯积, 但不再保证交换性.
+]
+
+#example(title: "上同调自然给出非连通环谱")[
+  取非零普通交换环 $R$. 上例的 $C^* (x;H R)$ 满足
+  $ pi_(-q) C^* (x;H R) tilde.eq H^q (x;R) $
+  因而只要 $x$ 有非零的正次上同调, 这个交换环谱就非连通. 例如圆周 $S^1$ 给出
+  $ pi_0 C^* (S^1;H R) tilde.eq R, quad pi_(-1) C^* (S^1;H R) tilde.eq R $
+  其他次数全为零. 第 $-1$ 次记录的正是圆周的 $H^1$. 所以即使系数环谱 $H R$ 离散, 取上同调后也会出现负次同伦; 后面定义整体截面谱 $Gamma$ 时, 使用的也是这个次数约定.
 ]
 
 最后, 虽然底层的 $Sp$ 稳定, 环谱范畴本身并不稳定: 它的始对象是 $SS$, 终对象是零环谱, 两者不等价. 固定一个环谱以后, 对它的模再做线性代数, 才会重新进入稳定环境; 这正是下一节要介绍的内容.

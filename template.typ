@@ -18,6 +18,29 @@
 #let c-prop    = rgb("#376E98")
 #let c-con     = rgb("#567389")
 #let c-rem     = rgb("#718096")
+#let table-tint = rgb("#F3F7FD")
+
+// Shared blue-gray lines for mathematical diagrams.
+#let book-diagram = fletcher.diagram.with(edge-stroke: .65pt + muted)
+
+// Keep the header rule continuous across column gutters. The guard also
+// makes this safe when an included chapter applies conf a second time.
+#let _table-header-rule(it) = {
+  let needs-rule(child) = child.func() == table.header and not (
+    child.children.any(cell => cell.func() == table.hline)
+  )
+  if it.children.any(needs-rule) {
+    let fields = it.fields()
+    let children = fields.remove("children")
+    table(..fields, ..children.map(child => {
+      if needs-rule(child) {
+        let header-fields = child.fields()
+        let cells = header-fields.remove("children")
+        table.header(..header-fields, ..cells, table.hline())
+      } else { child }
+    }))
+  } else { it }
+}
 
 // Family names as exposed by Typst (including Chinese fallbacks).
 #let source-han-serif = "Source Han Serif"
@@ -91,7 +114,7 @@
 // Examples:
 //   #simplex2($x_0$, $x_1$, $x_2$)
 //   #simplex2($x_0$, $x_1$, $x_2$, ab: $f$, bc: $g$, ac: $g compose f$)
-#let simplex2(a, b, c, ab: none, bc: none, ac: none) = fletcher.diagram(
+#let simplex2(a, b, c, ab: none, bc: none, ac: none) = book-diagram(
   spacing: 20pt,
   cell-size: 0pt,
   node-inset: 5pt,
@@ -115,7 +138,7 @@
     fletcher.node((0.5, 0.61), text(size: 10pt, "///"))
   },
 )
-#let simplex2hollow(a, b, c, ab: none, bc: none, ac: none) = fletcher.diagram(
+#let simplex2hollow(a, b, c, ab: none, bc: none, ac: none) = book-diagram(
   spacing: 20pt,
   cell-size: 0pt,
   node-inset: 5pt,
@@ -270,13 +293,17 @@
   set math.equation(numbering: none)
   set heading(numbering: "1.1")
 
-  // Tables, captions, and notes use the same restrained blue-gray palette.
+  // Striped tables: centered text, open columns, and one header rule.
   set table(
-    stroke: .4pt + rule-c,
+    stroke: none,
     inset: (x: 9pt, y: 7pt),
-    fill: (x, y) => if calc.even(y) { mist } else { white },
+    column-gutter: 18pt,
+    align: center + horizon,
+    fill: (x, y) => if calc.even(y) { table-tint } else { none },
   )
-  show table.header: set text(weight: "semibold", fill: c-thm)
+  set table.hline(stroke: .65pt + muted)
+  show table.cell.where(y: 0): set text(weight: "bold", fill: ink)
+  show table: _table-header-rule
   show figure.caption: set text(size: 9pt, fill: muted)
   set figure(gap: .8em)
   show footnote.entry: set text(size: 8.5pt)

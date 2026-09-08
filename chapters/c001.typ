@@ -148,7 +148,7 @@ $ pi_n (cal(T),Delta_0) = 0, quad n >= 2 $
 
 #figure(
   {
-    let colors = (blue, accent, muted)
+    let colors = (ink, blue, muted)
     let snapshot(theta, label) = stack(
       dir: ttb, spacing: 7pt,
       box(width: 74pt, height: 74pt, {
@@ -581,7 +581,7 @@ $ (c b^(-1))(b a^(-1)) = c a^(-1) $
 这里的纤维积表达了"只有首尾相接的箭头才能复合". 它由下面的拉回方块定义:
 
 #figure(
-  fletcher.diagram(
+  book-diagram(
     cell-size: 0pt, node-inset: 5pt,
     {
       fletcher.edge((0, 0), (1, 0), label: $p_2$, marks: "->")

@@ -7,7 +7,7 @@
   set text(size: 10pt, fill: ink)
   canvas({
     import draw: *
-    let warm = rgb("#B96A39")
+    let highlight = ink
     let arrow-style = (end: ">", length: 0.18, width: 0.14)
 
     for offset in (0, 8) {
@@ -15,7 +15,7 @@
         radius: .18, fill: mist, stroke: rule-c + .6pt)
       line((offset, .75), (offset + 4.8, .75), stroke: blue + 1pt)
       for dx in (.9, 2.4, 3.9) {
-        let col = if dx == 2.4 { warm } else { muted.lighten(28%) }
+        let col = if dx == 2.4 { highlight } else { muted.lighten(28%) }
         line((offset + dx, 3.5), (offset + dx, .85),
           stroke: (paint: col, thickness: .6pt, dash: "dashed"))
         circle((offset + dx, 4.2), radius: (.3, .65),
@@ -28,8 +28,8 @@
     content((10.4, 6.25), text(fill: muted)[万有族])
     content((2.4, 5.8), $Y=T times_M U$)
     content((10.4, 5.8), $U$)
-    content((2.4, 5.1), text(fill: warm)[$Y_(t_0)$])
-    content((10.4, 5.1), text(fill: warm)[$U_(m_0)$])
+    content((2.4, 5.1), text(fill: highlight)[$Y_(t_0)$])
+    content((10.4, 5.1), text(fill: highlight)[$U_(m_0)$])
 
     line((5.1, 4.2), (7.7, 4.2), stroke: blue + .9pt, mark: arrow-style)
     content((6.4, 4.62), $tilde(g)$)
@@ -43,8 +43,8 @@
     content((13.5, 2.05), $pi$)
     content((.35, .25), $T$)
     content((12.45, .25), $M$)
-    content((2.4, .25), text(fill: warm)[$t_0$])
-    content((10.4, .25), text(fill: warm)[$m_0=g(t_0)$])
+    content((2.4, .25), text(fill: highlight)[$t_0$])
+    content((10.4, .25), text(fill: highlight)[$m_0=g(t_0)$])
   })
 }
 
@@ -54,9 +54,9 @@
   set text(size: 10pt, fill: ink)
   canvas({
     import draw: *
-    let warm = rgb("#B96A39")
+    let highlight = ink
     let arrow-style = (end: ">", length: .18, width: .14)
-    let guide = (paint: warm.lighten(30%), thickness: .65pt, dash: "dashed")
+    let guide = (paint: highlight.lighten(30%), thickness: .65pt, dash: "dashed")
 
     content((2.2, 6.25), $Y: x^2=t^2$)
     content((9.65, 6.25), $U: x^2=c$)
@@ -80,7 +80,7 @@
 
     for pos in (1.1, 3.3, 9.75) {
       for height in (2.95, 5.05) {
-        circle((pos, height), radius: .065, fill: warm, stroke: white + .4pt)
+        circle((pos, height), radius: .065, fill: highlight, stroke: white + .4pt)
       }
     }
     circle((2.2, 4), radius: .07, fill: blue, stroke: none)
@@ -94,7 +94,7 @@
     line((7.7, .7), (11.55, .7), stroke: blue + .9pt, mark: arrow-style)
     for (pos, label) in ((1.1, $-1$), (2.2, $0$), (3.3, $1$), (8.3, $0$), (9.75, $1$)) {
       circle((pos, .7), radius: .055,
-        fill: if pos in (2.2, 8.3) { blue } else { warm }, stroke: none)
+        fill: if pos in (2.2, 8.3) { blue } else { highlight }, stroke: none)
       content((pos, .32), label)
     }
     content((2.2, -.2), $T=bb(A)^1_k$)

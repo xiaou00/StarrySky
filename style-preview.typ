@@ -56,7 +56,7 @@ $ e = e compose e' = e' $
 
 #figure(
   table(
-    columns: (1fr, 1fr, 1fr), align: left,
+    columns: (1fr, 1fr, 1fr),
     table.header([范畴], [对象], [态射]),
     [$Set$], [集合], [映射],
     [$Grp$], [群], [群同态],

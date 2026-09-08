@@ -397,7 +397,7 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
 具体地, 一个 $T-> [U slash G]$ 就是一个右 $G_T$-挠子 $E->T$, 连同满足 $phi(e g)=g^(-1) phi(e)$ 的态射 $phi:E->U$. 挠子总可由代数空间表示; 当 $G$ 仿射时, $E$ 也是概形. 给定 $(E,phi)$, 有 $2$-Cartesian方块
 
 #figure(
-  diagram(
+  book-diagram(
     cell-size: 0pt, node-inset: 7pt,
     {
       edge((0, 0), (1, 0), label: $phi$, marks: "->")
@@ -534,7 +534,7 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
   参见 @Stacks26[Tag 0DUH].
 
   同时, @prop-stack-qcoh-descent 给出
-  $ QCoh([U slash G]) tilde.eq QCoh_G (U) $
+  $ QCoh([U slash G]) tilde.eq QCoh^G (U) $
   右边是带 $G$-等变结构的拟凝聚层. 对向量丛同样成立. 在域 $k$ 上, $B G$ 上的向量丛就是 $G$ 的有限维代数表示; 例如 $bb(G)_m$ 的权重 $d in ZZ$ 给出 $B bb(G)_m$ 上的线丛, 沿分类 $cal(L)$ 的态射拉回后成为 $cal(L)^(times.o d)$, 负次幂按对偶理解.
 ] <prop-quotient-stack-calculation>
 ]

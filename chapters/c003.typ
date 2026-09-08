@@ -174,7 +174,7 @@ $ Hom_V (T,U)->Hom_V (T_0,U) $
 ]
 
 #figure(
-  diagram(
+  book-diagram(
     cell-size: 0pt, node-inset: 7pt,
     {
       edge((0, 0), (1, 0), marks: "->")
@@ -248,7 +248,7 @@ $ Y tilde.eq T times_M U $
 
 #figure(
   universal-family-pullback(),
-  caption: [沿分类态射拉回万有族. 图中只示意若干纤维, 橙色标出 $Y_(t_0) tilde.eq U_(g(t_0))$. 外框表示总空间, 整个方块是拉回方块.],
+  caption: [沿分类态射拉回万有族. 图中只示意若干纤维, 深蓝色标出 $Y_(t_0) tilde.eq U_(g(t_0))$. 外框表示总空间, 整个方块是拉回方块.],
 )
 
 分类态射不必是嵌入, 不同参数可以对应同一个对象. 如果 $g$ 经过一个 $k$-值点 $m:Spec k->M$, 拉回就是常值族 $T times_k U_m->T$. 更一般地, $g$ 描述对象怎样随 $T$ 变化. 当 $T=M$ 且 $g=id_M$ 时, 每个参数仍对应它自己, 拉回便是万有族本身; 这就是 $xi_"univ"=eta_M (id_M)$ 的几何含义.
@@ -989,4 +989,3 @@ Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成
 ] <prop-quot-tangent>
 
 在域上构造层的模空间时, 常先把层写成一个固定层的商. 例如选定 $cal(F)(a)$ 的一组生成截面, 就得到 $cal(O)_X^(plus.o b) (-a)->>cal(F)$, 从而在Quot概形上研究它的变化. 这里还记着所选的商映射; 若最终只想分类层本身, 就需要进一步处理更换这些生成截面的等同.
-
