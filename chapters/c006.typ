@@ -479,9 +479,7 @@ $ H^i (cal(G),N) -> H^i (cal(F),f^* N) $
 === 局部自由条件
 
 #definition(title: "环谱上的局部自由模")[
-  对 $f in pi_0 A$, 记 $A[f^(-1)]$ 为使 $f$ 可逆的环谱局部化. 它满足 $pi_i (A[f^(-1)]) tilde.eq (pi_i A)[f^(-1)]$.
-
-  称 $A$-模 $P$ *局部自由, 秩为 $r$*, 若有有限多个 $f_j in pi_0 A$ 生成单位理想, 使
+  (回顾 @def-spectral-localization) 称 $A$-模 $P$ *局部自由, 秩为 $r$*, 若有有限多个 $f_j in pi_0 A$ 生成单位理想, 使
   $ A[f_j^(-1)]⊗_A P tilde.eq A[f_j^(-1)]^(⊕r) $
   这里 $r>=0$. 这些局部化对应普通概形 $Spec(pi_0 A)$ 的主开覆盖. 换句话说, *局部选基以后, $P$ 就是 $r$ 份 $A$*. 这个定义直接使用环谱局部化, 也适用于本章的非连通测试代数. 连通情形参见 @Lur11DAG8[定义 2.7.29, 注 2.7.30].
 ] <def-locally-free-spectral-module>

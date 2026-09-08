@@ -83,6 +83,35 @@
 #let _env-counter(tag) = counter("env-" + tag)
 #let _part-counter = counter("part")
 #let _book-title = state("ex-nihilo-book-title", [])
+#let _appendix-depth = state("ex-nihilo-appendix-depth", 0)
+
+// Keep the native heading counter for links and nesting. Format its chapter
+// component from the target chapter, so references work across appendix scopes.
+#let _chapter-number(chapter, padded: false) = {
+  let appendices = query(heading.where(level: 1)).filter(it =>
+    it.numbering != none and _appendix-depth.at(it.location()) > 0)
+    .map(it => counter(heading).at(it.location()).first())
+  let preceding = appendices.filter(n => n <= chapter).len()
+  if chapter in appendices {
+    numbering("A", preceding)
+  } else {
+    numbering(if padded { "01" } else { "1" }, chapter - preceding)
+  }
+}
+
+#let _heading-numbering(..numbers) = context {
+  let values = numbers.pos()
+  ( (_chapter-number(values.first()),) + values.slice(1).map(str) ).join(".")
+}
+
+// Place this wrapper at the end of the book. Included chapters can keep their
+// own conf(easy: true); multiple wrappers continue A, B, C rather than restart.
+// Usage: #appendix[#include "chapters/a001.typ"]
+#let appendix(body) = {
+  _appendix-depth.update(n => n + 1)
+  body
+  _appendix-depth.update(n => n - 1)
+}
 
 // A part sits above chapters but does not enter the chapter counter. The
 // unnumbered heading supplies its bookmark and outline entry without advancing
@@ -219,9 +248,14 @@
   "env-axiom": "公理",
 )
 
-#let _env-ref(it) = {
+#let _book-ref(it) = {
   let el = it.element
-  if el != none and repr(el.func()) == "block" and repr(el.body.func()) == "align" {
+  if el != none and el.func() == heading and it.form == "normal" and it.supplement == auto {
+    let prefix = if el.level != 1 { [小节] }
+      else if _appendix-depth.at(el.location()) > 0 { [附录] }
+      else { [章节] }
+    ref(it.target, supplement: prefix)
+  } else if el != none and repr(el.func()) == "block" and repr(el.body.func()) == "align" {
     let inner = el.body.body
     if repr(inner.func()) == "sequence" and inner.children.len() > 0 {
       let first = inner.children.first()
@@ -230,7 +264,7 @@
         let chapter = hs.at(0, default: 1)
         let section = hs.at(1, default: 0)
         let n = counter(first.key).at(el.location()).first() + 1
-        let number = str(chapter) + "." + str(section) + "." + str(n)
+        let number = _chapter-number(chapter) + "." + str(section) + "." + str(n)
         link(el.location(), _env-labels.at(first.key) + " " + number)
       } else {
         it
@@ -289,9 +323,9 @@
   set list(indent: 1em, body-indent: .6em, marker: text(fill: blue, [•]))
   set enum(indent: 1em, body-indent: .6em)
   show link: set text(fill: blue)
-  show ref: _env-ref
+  show ref: _book-ref
   set math.equation(numbering: none)
-  set heading(numbering: "1.1")
+  set heading(numbering: _heading-numbering)
 
   // Striped tables: centered text, open columns, and one header rule.
   set table(
@@ -345,9 +379,11 @@
       _reset-env-counters()
       pagebreak(weak: true)
       block(width: 100%, breakable: false, sticky: true, above: 14pt, below: 22pt, {
-        _small-label([
-          CHAPTER #counter(heading).display("01")
-        ], color: blue)
+        _small-label({
+          let chapter = counter(heading).at(it.location()).first()
+          let prefix = if _appendix-depth.at(it.location()) > 0 { "APPENDIX " } else { "CHAPTER " }
+          prefix + _chapter-number(chapter, padded: true)
+        }, color: blue)
         v(12pt)
         text(size: 24pt, weight: "semibold", fill: midnight, it.body)
         v(16pt)
@@ -360,14 +396,14 @@
     grid(
       columns: (auto, 1fr), column-gutter: 10pt, align: horizon,
       text(font: latin-serif, size: 12pt, fill: blue,
-        counter(heading).display("1.1")),
+        counter(heading).display(_heading-numbering)),
       text(size: 15pt, weight: "semibold", fill: midnight, it.body),
     ),
   )
   show heading.where(level: 3): it => block(
     breakable: false, sticky: true, above: 14pt, below: 7pt,
     text(size: 12pt, weight: "semibold", fill: ink, [
-      #text(fill: blue, counter(heading).display("1.1.1"))
+      #text(fill: blue, counter(heading).display(_heading-numbering))
       #h(5pt)#it.body
     ]),
   )
@@ -441,7 +477,7 @@
             link(el.location(), grid(
               columns: (28pt, 1fr, auto), column-gutter: 10pt, align: horizon,
               text(size: 18pt, fill: blue,
-                str(counter(heading).at(el.location()).first())),
+                _chapter-number(counter(heading).at(el.location()).first())),
               text(size: 12pt, weight: "semibold", fill: midnight, it.body()),
               outline-page(it.page()),
             )))
@@ -482,7 +518,7 @@
         let chapter = hs.at(0, default: 1)
         let section = hs.at(1, default: 0)
         let n = cnt.get().first()
-        let number = str(chapter) + "." + str(section) + "." + str(n)
+        let number = _chapter-number(chapter) + "." + str(section) + "." + str(n)
         text(weight: "semibold", fill: color,
           label
           + if numbering { " " + number } else { "" }

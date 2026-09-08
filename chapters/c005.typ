@@ -844,3 +844,112 @@ $ B⊗_A -:Mod_A->Mod_B $
 这里 $B$ 用左乘保留 $B$-作用, 用 $A->B$ 获得右 $A$-作用. 两个构造互为伴随:
 $ Map_(Mod_B) (B⊗_A m,n) tilde.eq Map_(Mod_A) (m,op("Res") n) $
 这就是把系数从 $A$ 换成 $B$ 的自然方式. 对普通环的 Eilenberg--MacLane 环谱, 它恢复导出的扩张标量. 参见 @Lur17[命题 4.6.2.17].
+
+== 多项式环谱与局部化
+
+有了模与相对张量积, 就可以用泛性质描述加变量和取逆这两个基本构造.
+
+=== 多项式环谱
+
+以下固定交换环谱 $R$, 不要求连通. 记 $CAlg_R:=CAlg(Sp)_(R \/)$, 其对象是交换环谱 $A$ 连同 $R->A$. 对交换 $R$-代数, $A⊗_R B$ 表示推出 $A coprod_R B$; 它的底层模正是上一节介绍的相对张量积.
+
+#definition(title: "多项式环谱的泛性质")[
+  *一元多项式环谱* $R[t]$ 是由一个零次生成元自由生成的交换 $R$-代数, 即对每个 $A in CAlg_R$ 有自然等价
+  $ Map_(CAlg_R) (R[t],A) tilde.eq Map_(Mod_R) (R,A) tilde.eq Omega^oo A $
+  生成元 $t$ 对应恒等映射 $id_(R[t])$. 因而给出 $R[t]->A$, 就是选定 $A$ 中一个元素, 连同元素之间的全部同伦. 特别地,
+  $ pi_0 Map_(CAlg_R) (R[t],A) tilde.eq pi_0 A $
+  第一式比这个同伦类的等式保留了更多信息.
+
+  更一般地, 忘却函子 $CAlg_R->Mod_R$ 有左伴随 $op("Sym")_R$, 称为*自由交换代数*或*对称代数*, 满足
+  $ Map_(CAlg_R) (op("Sym")_R (M),A) tilde.eq Map_(Mod_R) (M,A) $
+  所以 $R[t]:=op("Sym")_R (R)$; 多元情形定义为 $R[t_1,dots,t_n]:=op("Sym")_R (R^(⊕n))$. 参见 @Lur17[例 3.1.3.14], @Lur11DAG7[记号 2.12].
+] <def-polynomial-ring-spectrum>
+
+#proposition(title: "加变量与换系数")[
+  多项式环谱有熟悉的性质:
+  - 给出 $R[t_1,dots,t_n]->A$, 等于选择 $n$ 个元素: 映射生象为 $(Omega^oo A)^n$.
+  - 加入两组变量可以分步进行:
+    $ R[t_1,dots,t_n]⊗_R R[u_1,dots,u_m] tilde.eq R[t_1,dots,t_n,u_1,dots,u_m] $
+  - 沿任意交换环谱态射 $R->B$ 换系数, 有
+    $ B⊗_R R[t_1,dots,t_n] tilde.eq B[t_1,dots,t_n] $
+  - 若 $R$ 连通, 则 $R[t_1,dots,t_n]$ 也连通, 且
+    $ pi_0 (R[t_1,dots,t_n]) tilde.eq (pi_0 R)[t_1,dots,t_n] $
+] <prop-polynomial-ring-spectrum>
+
+#proofsketch[
+  前三条都只需向任意目标 $A$ 取映射生象: 两边描述同样的元素选择. 最后一条由自由交换代数的构造与连通性得到; 取 $pi_0$ 后, 恢复普通交换代数的自由构造. 参见 @Lur17[第 3.1.3 节, 命题 7.1.3.15].
+]
+
+#remark(title: "这里的多项式仍有高阶信息")[
+  本节的 $R[t]$ 始终按上面的*自由 $EE_oo$ 泛性质*定义; 文献中也常记为 $R\{t\}$. 它一般不同于由离散加法幺半群 $NN$ 构造的幺半群环谱 $R smash Sigma^oo_+ NN$.
+
+  差别来自对称性也要保留同伦. 具体地, 在底层 $R$-模中,
+  $ op("Sym")_R (M) tilde.eq ⊕_(n>=0) (M^(⊗_R n))_(h Sigma_n), quad R[t] tilde.eq ⊕_(n>=0) (R smash Sigma^oo_+ B Sigma_n) $
+  其中 $Sigma_n$ 是置换 $n$ 个输入的对称群, $(-)_(h Sigma_n)$ 表示对群作用取余极限, 即*同伦轨道*; $n=0$ 项为 $R$. 参见 @Lur17[构造 3.1.3.9, 例 3.1.3.14].
+
+  因而对普通交换环 $K$, $(H K)[t]$ 一般不能直接写成 $H(K[t])$. 例如 $K=bb(F)_2$ 时, $n=2$ 项的第一同伦群是 $H_1 (B Sigma_2;bb(F)_2) tilde.eq bb(F)_2$, 已经产生了高次信息. 对 $QQ$-代数 $K$, 有限群的正次同调消失, 才有 $(H K)[t] tilde.eq H(K[t])$.
+]
+
+=== 局部化
+
+#definition(title: "使一个元素可逆")[
+  设 $f in pi_0 R$. *局部化* $R[f^(-1)]$ 是一个交换 $R$-代数, 其中 $f$ 的像可逆, 并且对每个交换 $R$-代数 $A$, 有
+  $ Map_(CAlg_R) (R[f^(-1)],A) tilde.eq cases(* & quad "若 " f " 在 " pi_0 A " 中可逆", emptyset & quad "否则") $
+  也就是说, 它是使 $f$ 可逆的交换 $R$-代数中的始对象. 这里的"唯一"是*延拓的整个生象可缩*, 因而同时包括全部相容同伦.
+
+  等价地, 对任意交换环谱 $A$, 预合成给出
+  $ Map_(CAlg(Sp)) (R[f^(-1)],A) -> Map_(CAlg(Sp)) (R,A) $
+  它把左边等价地识别为右边中那些使 $f$ 可逆的连通分支. 局部化存在, 并由此泛性质唯一确定到可缩选择. 参见 @Lur11DAG7[定义 2.8, 注 2.9].
+] <def-spectral-localization>
+
+#proposition(title: "局部化怎样计算")[
+  局部化逐次作用于同伦群:
+  $ pi_i (R[f^(-1)]) tilde.eq (pi_i R)[f^(-1)] quad (i in ZZ) $
+  因而它保持连通性与离散性. 特别地, 对普通交换环 $K$ 及 $f in K$,
+  $ (H K)[f^(-1)] tilde.eq H(K[f^(-1)]) $
+  若 $f$ 已可逆, 则 $R[f^(-1)] tilde.eq R$; 若 $f$ 幂零, 则 $R[f^(-1)] tilde.eq 0$.
+
+  对 $R$-模 $M$, 记 $M[f^(-1)]:=R[f^(-1)]⊗_R M$. 在 $Mod_R$ 中有
+  $ M[f^(-1)] tilde.eq colim(M stretch(->)^f M stretch(->)^f M stretch(->)^f dots), quad pi_i (M[f^(-1)]) tilde.eq (pi_i M)[f^(-1)] $
+  所以局部化可以直观地想成不断允许再除以一次 $f$. 限制标量将 $Mod_(R[f^(-1)])$ 等价地识别为 $Mod_R$ 中那些乘 $f$ 为等价的模组成的满子范畴.
+] <prop-spectral-localization-computation>
+
+#proofsketch[
+  在模的上述余极限中, 乘 $f$ 成为等价, 且它对这一性质是泛的. 谱的同伦群保持滤过余极限, 所以每次同伦群都变成普通模的局部化. 取 $M=R$ 得到环谱的公式; 交换环谱结构与泛性质由局部化定理保证. 参见 @Lur17[第 7.2.3 节], @Lur11DAG7[注 2.9].
+]
+
+#proposition(title: "所有单元素局部化来自同一个推出方块")[
+  记 $SS[t,t^(-1)]:=(SS[t])[t^(-1)]$. 选取 $f in pi_0 R$ 的一个代表, 多项式的泛性质给出 $SS[t]->R$, 将 $t$ 送到 $f$. 则下图是 $CAlg(Sp)$ 中的推出方块:
+
+  #align(center)[
+    #book-diagram(
+      spacing: 40pt, cell-size: 0pt, node-inset: 5pt,
+      {
+        fletcher.edge((0, 0), (1, 0), marks: "->")
+        fletcher.edge((0, 0), (0, 1), marks: "->")
+        fletcher.edge((1, 0), (1, 1), marks: "->")
+        fletcher.edge((0, 1), (1, 1), marks: "->")
+        fletcher.node((0, 0), $SS[t]$)
+        fletcher.node((1, 0), $SS[t,t^(-1)]$)
+        fletcher.node((0, 1), $R$)
+        fletcher.node((1, 1), $R[f^(-1)]$)
+      },
+    )
+  ]
+
+  因而
+  $ R[f^(-1)] tilde.eq R⊗_(SS[t]) SS[t,t^(-1)] $
+  上边先把通用变量 $t$ 变成可逆元素, 再将 $t$ 代成 $f$, 就得到 $R$ 中的局部化. 参见 @Lur11DAG7[注 2.13].
+] <prop-localization-polynomial-pushout>
+
+#proof[
+  对任意交换 $R$-代数 $A$, 从推出对象映到 $A$, 等于把 $SS[t]->R->A$ 延拓到 $SS[t,t^(-1)]$. 由局部化的泛性质, 当 $f$ 的像可逆时, 延拓生象可缩; 否则为空. 这正是 $R[f^(-1)]$ 的泛性质.
+]
+
+同理, 任意换系数 $R->B$ 都有 $B⊗_R R[f^(-1)] tilde.eq B[f_B^(-1)]$, 其中 $f_B$ 是 $f$ 的像. 连续局部化则满足
+$ (R[f^(-1)])[g^(-1)] tilde.eq R[f^(-1),g^(-1)] tilde.eq R[(f g)^(-1)] $
+这里 $f,g in pi_0 R$: 在交换环中, $f g$ 可逆等价于二者都可逆. 特别地, $R[f^(-1)]⊗_R R[f^(-1)] tilde.eq R[f^(-1)]$.
+
+记 *Laurent 多项式环谱* $R[t,t^(-1)]:=(R[t])[t^(-1)]$. 多项式选择一个任意元素, Laurent 多项式则选择一个可逆元素:
+$ Map_(CAlg_R) (R[t,t^(-1)],A) tilde.eq (Omega^oo A)^times $
+右边是 $Omega^oo A$ 中对应 $(pi_0 A)^times$ 的连通分支. 后面从点函子看, $R[t]$ 因而给出仿射直线, 而 $R[t,t^(-1)]$ 给出其中的乘法群. 在普通零次环上, 局部化对应主开集 $D(f) subset.eq Spec(pi_0 R)$; 各个 $pi_i R$ 都在同一主开集上局部化. 这正是下一章用局部化定义局部自由模的依据.

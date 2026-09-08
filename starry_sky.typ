@@ -15,16 +15,27 @@
 
 #part[高阶对象]
 
-#include "chapters/c001.typ"
+// #include "chapters/c001.typ"
 
-#include "chapters/c002.typ"
+// #include "chapters/c002.typ"
 
-#include "chapters/c003.typ"
+// #include "chapters/c003.typ"
 
-#include "chapters/c004.typ"
+// #include "chapters/c004.typ"
 
-#include "chapters/c005.typ"
+// #include "chapters/c005.typ"
 
-#include "chapters/c006.typ"
+// #include "chapters/c006.typ"
+
+#part[代数 $K$-理论]
+
+#include "chapters/c007.typ"
+
+#part[附录]
+
+#appendix[
+  #include "chapters/a001.typ"
+]
 
 #references("references.bib")
+
