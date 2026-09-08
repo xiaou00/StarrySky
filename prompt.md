@@ -20,6 +20,7 @@ xxx $ a + b $, xxx /* 没有单开一行 */
 - 正文优先自然分页, 不要为了让定义、命题或例子整块排在同一页而大量添加 `breakable: false`.
 - 术语约定: proper 统一译作"紧合", properness 译作"紧合性".
 - 术语约定: smash product 统一译作"砸积".
+- 术语约定: straightening 译作"拉直", unstraightening 译作"反拉直"; 英文仅在首次出现时标注.
 - 算筹的 E 统一用 Typst 的 `EE` 表示, 例如 `$EE_1$`, `$EE_oo$`.
 - 尽可能多使用 typst 的符号系统, 例如用 `->` 代替 `arrow`.
 - 强调文本使用 `*...*` 粗体.
