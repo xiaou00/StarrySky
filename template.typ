@@ -629,6 +629,7 @@
 #let Tor = "Tor"
 #let Nm = "Nm"
 #let Gr = "Gr"
+#let Wh = "Wh"
 #let Hilb = "Hilb"
 #let Quot = "Quot"
 #let Assem = "Assem"
@@ -690,3 +691,4 @@
 #let lfork = math.attach(box(width: 0pt)[], t: $fork$)
 #let odot = $\u{2299}$
 #let wr = $\u{2240}$
+#let Proj = "Proj"
