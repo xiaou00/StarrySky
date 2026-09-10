@@ -608,3 +608,237 @@ $ f " 完美 " quad <==> quad cal(O)_X in cat("Perf")(X slash Y) $
 一个常用结论是, 若 $f$ 适当, 平坦且有限表示, 则
 $ E in cat("Perf")(X slash Y) quad ==> quad f_* E in cat("Perf")(Y) $
 且这里的导出推前与任意基变换相容, 见 @Stacks26[Tag 0DJT]. 这使相对完美性适合研究随底空间变化的上同调, 也是对偶理论与复形模空间中的基本有限性条件.
+
+== 前推与投影公式 <sec-perfect-pushforward>
+
+本节先在一般预层上推导投影公式, 再讨论前推何时保持完美性. 沿用#link(<chap-quasi-coherent>)[第六章]的约定, $f^*,f_*$ 和张量积都已经是导出的; 用普通复形的记号写, 它们就是 $L f^*,R f_*$ 和导出张量积.
+
+=== 前推与完美性
+
+设 $f:X->Y$ 是可达预层 $CAlg_Lambda->Ani$ 之间的态射. 由 @def-qcoh-pushforward, 拉回保持小余极限, 因而有右伴随
+$ f^*:QCoh(Y) ⇄ QCoh(X):f_*, quad f^* tack.l f_* $
+也就是
+$ Map_(QCoh(Y)) (T,f_* F) tilde.eq Map_(QCoh(X)) (f^* T,F) $
+以下简写这两个映射生象为 $Map_Y$ 和 $Map_X$. 前推保持极限, 因而在稳定范畴中正合. 但它未必保持小余极限, 也未必保持完美对象.
+
+#proposition(title: [仿射前推的完美性判据])[
+  对交换环谱态射 $A->B$ 及 $f:Spec B->Spec A$, 有
+  $ f_* (cat("Perf")(B)) subset.eq cat("Perf")(A) quad <==> quad B in cat("Perf")(A) $
+  右边把 $B$ 看成 $A$-模.
+] <prop-affine-pushforward-perfect>
+
+#proof[
+  仿射前推就是限制标量. 若它保持完美性, 对单位模 $B in cat("Perf")(B)$ 使用即可.
+
+  反过来, 由 @thm-perfect-compact-dualizable, 每个完美 $B$-模都由 $B$ 经过有限次移位, 有限余极限和收缩得到. 限制标量正合且保持收缩, 所以其像由完美 $A$-模 $B$ 经过同样的操作得到, 仍然完美.
+]
+
+例如对域 $k$, $f:Spec k[t]->Spec k$ 是光滑的完美态射, 但 $f_* cal(O)=k[t]$ 是无限维 $k$-向量空间, 因而不完美. 这也再次说明, 完美态射与其前推保持完美性是两个条件.
+
+=== 投影映射的构造
+
+给定 $E in QCoh(Y)$ 和 $F in QCoh(X)$, 想比较的是先在 $Y$ 上张量, 还是先把系数拉到 $X$ 上张量. 无论它们是否完美, 总有一个自然映射
+$ alpha_(E,F):E times.o f_* F -> f_* (f^* E times.o F) $
+它的构造只用伴随的余单位 $epsilon_F:f^* f_* F->F$. 先在 $X$ 上作
+$ f^* (E times.o f_* F) tilde.eq f^* E times.o f^* f_* F
+  stretch(->)^(id times.o epsilon_F) f^* E times.o F $
+再沿 $f^* tack.l f_*$ 转置, 就得到 $alpha_(E,F)$. 第一处等价用了拉回的对称幺半性. 这称为*投影映射*, 投影公式则断言它在合适条件下是等价.
+
+仿射时, $F$ 是 $B$-模, 这个映射就是张量积的结合等价
+$ E times.o_A op("Res")_A^B F
+  tilde.eq op("Res")_A^B ((B times.o_A E) times.o_B F) $
+所以仿射情况下不要求 $E$ 完美. 一般情况下, 可对偶性提供了一个统一的证明.
+
+=== 完美系数的投影公式
+
+#theorem(title: [一般预层上的投影公式])[
+  设 $f:X->Y$ 是可达预层之间的任意态射. 对 $E in cat("Perf")(Y)$ 和任意 $F in QCoh(X)$, 投影映射给出自然等价
+  $ E times.o f_* F tilde.eq f_* (f^* E times.o F) $
+  也就是
+  $ f_* (F times.o f^* E) tilde.eq f_* F times.o E $
+] <thm-prestack-projection-formula>
+
+#proof[
+  由 @thm-perfect-category-structure, $E$ 可对偶. 拉回保持对偶, 所以
+  $ f^* (E^or) tilde.eq (f^* E)^or $
+  对任意 $T in QCoh(Y)$, 依次使用对偶与伴随, 得到
+  $ Map_Y (T,E times.o f_* F)
+    &tilde.eq Map_Y (E^or times.o T,f_* F) \
+    &tilde.eq Map_X (f^* (E^or times.o T),F) \
+    &tilde.eq Map_X ((f^* E)^or times.o f^* T,F) \
+    &tilde.eq Map_X (f^* T,f^* E times.o F) \
+    &tilde.eq Map_Y (T,f_* (f^* E times.o F)) $
+  这些等价对 $T,E,F$ 都自然. 因而 Yoneda 引理给出所需对象之间的等价. 展开对偶的评价与余评价, 再用三角恒等式, 其伴随转置正是上一段的 $id times.o epsilon_F$, 所以得到的就是投影映射 $alpha_(E,F)$.
+]
+
+这个证明适用于任意强对称幺半左伴随及其右伴随. 对本书的预层, 可达性已经保证 $QCoh$ 可呈示及前推存在; 此公式不再要求 $X,Y$ 是叠, 也不要求 $f$ 适当, 平坦或有有限 Tor 维数. 经典带环空间上的版本见 @Stacks26[Tag 0B54].
+
+对偶还把内部 Hom 化成张量积:
+$ underline(Hom)_Y (E,M) tilde.eq E^or times.o M $
+于是对上述 $E,F$, 将投影公式用于 $E^or$ 就有
+$ f_* underline(Hom)_X (f^* E,F)
+  tilde.eq f_* ((f^* E)^or times.o F)
+  tilde.eq underline(Hom)_Y (E,f_* F) $
+这解释了完美系数的作用: 张量一个完美对象可以转化为张量其对偶的伴随运算, 因而能与前推交换.
+
+特别地, 对结构态射 $p:X->Spec Lambda$ 和 $V in cat("Perf")(Lambda)$,
+$ Gamma(X,F times.o p^* V) tilde.eq Gamma(X,F) times.o_Lambda V $
+这里也没有要求 $Gamma(X,F)$ 完美.
+
+=== 任意系数的投影公式
+
+#proposition(title: [由完美系数推广到任意系数])[
+  设 $f:X->Y$ 是可达预层之间的态射. 假设自然函子给出
+  $ QCoh(Y) tilde.eq op("Ind")(cat("Perf")(Y)) $
+  且 $f_*$ 保持小滤过余极限. 则 @thm-prestack-projection-formula 对任意 $E in QCoh(Y)$ 和 $F in QCoh(X)$ 都成立.
+] <prop-projection-formula-arbitrary-coefficients>
+
+#proof[
+  将 $E$ 写成 $varinjlim(j in J) E_j$, 其中 $J$ 小且滤过, 每个 $E_j$ 完美. 投影映射两边关于 $E$ 都保持这个余极限: 拉回与张量积保持所有小余极限, 前推则由假设保持滤过余极限. 因而
+  $ E times.o f_* F
+    &tilde.eq varinjlim(j in J) (E_j times.o f_* F) \
+    &tilde.eq varinjlim(j in J) f_* (f^* E_j times.o F) \
+    &tilde.eq f_* (f^* E times.o F) $
+  中间一步使用完美系数的投影公式. 自然性保证这仍是 $alpha_(E,F)$.
+]
+
+#corollary(title: [概形上的投影公式])[
+  若 $f:X->Y$ 是普通概形之间的 qcqs 态射, 则对任意 $E in QCoh(Y)$ 和 $F in QCoh(X)$, 有
+  $ f_* F times.o E tilde.eq f_* (F times.o f^* E) $
+] <cor-scheme-projection-formula>
+
+#proof[
+  在 $Y$ 的仿射开集上检验即可, 因而可设 $Y=Spec A$, 此时 $X$ 是 qcqs 概形. 由 @cor-qcqs-qcoh-ind-perfect, $QCoh(Y)$ 是完美对象的 $op("Ind")$ 完备化.
+
+  此时 $f_*$ 是导出整体截面, 它保持滤过余极限, 这一点已在 @thm-scheme-perfect-compact 的证明中用有限仿射覆盖与 Mayer--Vietoris 证明. 因而上一命题适用. 前推与开集限制相容, 所以这些局部等价给出整体等价. 参见 @Stacks26[Tag 08DZ, Tag 08EU].
+]
+
+这里的推广确实用到了额外假设. 例如取 $X=coprod_(i in NN) Spec k$, $Y=Spec k$, 并令 $F=cal(O)_X$. 此时
+$ f_* F=product_(i in NN) k $
+若 $E=plus.o.big_(j in NN) k$, 投影映射变为
+$ (plus.o.big_(j in NN) k) times.o_k (product_(i in NN) k)
+  -> product_(i in NN) (plus.o.big_(j in NN) k) $
+左边的族在 $j$ 方向上有统一的有限支撑. 右边可以取第 $i$ 个分量为第 $i$ 个基向量, 因而不在像中. 所以任意系数的版本对一般预层并不自动成立.
+
+=== 适当前推保持完美性
+
+现在用投影公式控制前推的 Tor 振幅. 以下给出一个常用且假设明确的概形版本.
+
+#theorem(title: [适当完美态射的前推])[
+  设 $Y$ 是普通 Noetherian 概形, $f:X->Y$ 是适当的完美态射. 则前推限制为正合函子
+  $ f_*:cat("Perf")(X)->cat("Perf")(Y) $
+  即 $F$ 完美时, $f_* F$ 仍完美.
+] <thm-proper-perfect-pushforward>
+
+#proof[
+  完美性在 $Y$ 上局部检验, 可设 $Y=Spec A$. 这时 $X$ 是 Noetherian 拟紧分离概形. 取有限仿射开覆盖 $U_1,dots,U_r$, 使 $F$ 在各块上由有界有限生成投射复形表示. 记 $G=f_* F$.
+
+  *先看伪凝聚性.* $F$ 的上同调层凝聚, 且只有有限多个非零. 适当态射的凝聚上同调有限性定理保证它们的高阶前推仍凝聚. 有限仿射覆盖又给出上同调维数的界 $c=r-1$. 由上同调谱序列, $G$ 有界且各次上同调都是有限生成 $A$-模. 因为 $A$ Noetherian, 这说明 $G$ 伪凝聚. 这里用到的有限性定理见 @Stacks26[Tag 02O3, 引理 36.11.3].
+
+  *再看相对 Tor 振幅.* $f$ 有有限 Tor 维数, 而 $F$ 局部由有限投射模作有限构造得到. 因而 $F$ 相对于 $Y$ 局部有有限 Tor 振幅. 覆盖只有有限块, 可以选取统一的整数 $a<=b$, 使每个普通 $A$-模 $N$ 都满足
+  $ cal(H)^i (F times.o f^* N[0])=0 quad (i ∉ [a,b]) $
+
+  *将这个界传给前推.* @cor-scheme-projection-formula 允许使用任意普通模 $N$, 给出
+  $ G times.o_A N[0] tilde.eq f_* (F times.o f^* N[0]) $
+  右边可用上述覆盖的有限 Čech 复形计算. 它的 Čech 次数在 $[0,c]$, 各块的上同调次数在 $[a,b]$, 所以
+  $ H^i (G times.o_A N[0])=0 quad (i ∉ [a,b+c]) $
+  这个界与 $N$ 无关, 故 $G$ 有有限 Tor 振幅.
+
+  现在 $G$ 伪凝聚且有有限 Tor 振幅, 由 @thm-perfect-pseudo-coherent-tor 即知 $G$ 完美. 前推正合已由伴随关系说明. 这一结论也见 @Stacks26[Tag 08EV, Tag 0B6G].
+]
+
+证明中, 适当性提供上同调的有限生成性, 有限 Tor 维数提供张量后的统一次数界. Noetherian 假设则让有界凝聚复形直接成为伪凝聚复形. 这些是上述证明各步使用的条件.
+
+Noetherian 不是所有版本都必须的. 例如前面#link(<def-relative-perfect-complex>)[相对完美性部分]引用的适当, 平坦且有限表示的情形, 在任意普通基概形上都有
+$ f_* (cat("Perf")(X slash Y)) subset.eq cat("Perf")(Y) $
+由平坦性, $cat("Perf")(X) subset.eq cat("Perf")(X slash Y)$, 所以它也给出绝对完美对象的前推. 这是相对完美复形的前推定理 @Stacks26[Tag 0DJT].
+
+只有适当性则不够. 取 $A=k[epsilon] slash (epsilon^2)$ 和有限闭嵌入 $i:Spec k->Spec A$. 模 $k$ 在自身上完美, 但在 $A$ 上有自由解消
+$ dots stretch(->)^epsilon A stretch(->)^epsilon A stretch(->)^epsilon A -> k -> 0 $
+张量 $k$ 后所有微分为零, 所以 $Tor_i^A (k,k) tilde.eq k$ 对所有 $i>=0$ 成立. 因而 $i_* k$ 不完美. 有限态射虽然适当, 这里却没有有限 Tor 维数.
+
+=== 一般预层上的前推有限性
+
+回到可达预层. 投影公式已经在最初的伴随框架下成立, 而前推保持完美性还需要有限性. 一个直接的办法是把前推拉到仿射测试点上计算, 但这一步需要基变换定理.
+
+对 $y:Spec A->Y$, 记
+$ X_A:=X times_Y Spec A, quad u_A:X_A->X, quad f_A:X_A->Spec A $
+由拉回的相容性与伴随, 总有基变换映射
+$ beta_(y,F):y^* f_* F -> (f_A)_* u_A^* F $
+它是 $f_A^* y^* f_* F tilde.eq u_A^* f^* f_* F -> u_A^* F$ 的伴随转置. 一般不能直接把这个映射当成等价.
+
+#proposition(title: [逐仿射检验前推的完美性])[
+  设 $f:X->Y$ 是可达预层之间的态射. 假设对每个仿射测试点 $y:Spec A->Y$:
+
+  + $beta_(y,F)$ 对每个 $F in cat("Perf")(X)$ 都是等价.
+  + $(f_A)_*$ 把 $cat("Perf")(X_A)$ 送入 $cat("Perf")(A)$.
+
+  则 $f_*$ 保持完美对象.
+] <prop-prestack-pushforward-affine-test>
+
+#proof[
+  拉回保持完美性, 所以 $u_A^* F$ 完美. 由两个假设,
+  $ y^* f_* F tilde.eq (f_A)_* u_A^* F in cat("Perf")(A) $
+  这对所有测试点成立, 正是 $f_* F$ 完美的定义.
+]
+
+这里把两个需要另外验证的事实写了出来: 前推能否换基, 以及换基后的前推是否有限. 对概形或代数叠, 应使用相应的基变换与有限性定理; 不能仅由逐点定义 $QCoh$ 就推出前推逐点计算.
+
+#corollary(title: [可表仿射态射的充分必要条件])[
+  设 $f:X->Y$ 可表仿射, 即每个 $y:Spec A->Y$ 的拉回 $X_A$ 都是某个 $Spec B_A$. 则
+  $ f_* (cat("Perf")(X)) subset.eq cat("Perf")(Y)
+    quad <==> quad forall (A,y), quad B_A in cat("Perf")(A) $
+  特别地, 若每个 $B_A$ 都是有限局部自由的 $A$-模, 即 $f$ 可表有限局部自由, 则前推保持完美性. 这里 $Y$ 只需是可达预层.
+] <cor-affine-prestack-pushforward-perfect>
+
+#proof[
+  可表仿射时, 前推在每个测试点上就是限制标量. 说明这个计算与换基相容即可: 对 $A->A'$, 有 $B_(A') tilde.eq A' times.o_A B_A$, 并且对每个 $B_A$-模 $M$,
+  $ A' times.o_A op("Res")_A^(B_A) M
+    tilde.eq op("Res")_(A')^(B_(A')) (B_(A') times.o_(B_A) M) $
+  因而这些限制标量组成相容模族. 逐仿射的扩张与限制标量伴随一起给出全局的 $f^* tack.l f_*$, 所以这确实计算前推, 同时证明了上述基变换等价.
+
+  若各 $B_A$ 在 $A$ 上完美, 用 @prop-affine-pushforward-perfect 与上一命题即可. 反过来, 若 $f_*$ 保持完美性, 则 $f_* cal(O)_X$ 完美; 在 $y$ 上的值正是 $B_A$, 所以每个 $B_A$ 都完美. 有限局部自由时, 这些模是向量丛, 自然满足条件.
+]
+
+另一个办法是使用紧性, 它不依赖仿射描述.
+
+#proposition(title: [通过右伴随检验前推的完美性])[
+  假设 $QCoh(X)$ 和 $QCoh(Y)$ 都由紧对象生成, 且两边的紧对象恰好是完美对象. 再设 $f_*$ 保持小余极限, 从而有右伴随 $f^!$, 即
+  $ f^* tack.l f_* tack.l f^! $
+  则 $f_*$ 保持完美对象, 当且仅当 $f^!$ 保持小滤过余极限.
+] <prop-pushforward-right-adjoint-criterion>
+
+#proof[
+  先设 $f^!$ 保持滤过余极限. 对完美对象 $P$ 和小滤过图表 $N_j$, 有
+  $ Map_Y (f_* P,varinjlim(j in J) N_j)
+    &tilde.eq Map_X (P,f^! (varinjlim(j in J) N_j)) \
+    &tilde.eq Map_X (P,varinjlim(j in J) f^! N_j) \
+    &tilde.eq varinjlim(j in J) Map_Y (f_* P,N_j) $
+  最后一步用了 $P$ 的紧性及伴随. 所以 $f_* P$ 紧, 也就完美.
+
+  反过来, 假设 $f_*$ 保持完美对象. 对每个紧对象 $P in QCoh(X)$, 用 $P$ 检验自然映射
+  $ varinjlim(j in J) f^! N_j -> f^! (varinjlim(j in J) N_j) $
+  再用伴随, 就得到紧对象 $f_* P$ 的紧性等价. 因而这个映射被所有紧生成元检验为等价, 它本身也是等价.
+]
+
+$f^!$ 是前推的右伴随, 与拉回 $f^*$ 的方向相同, 但定义不同; 它是对偶理论中的另一种逆像. 上述命题说明, 在紧生成的语境中, 前推的有限性可以转化为这个右伴随与滤过余极限的相容性. 对一般预层, 这里的紧生成性, 完美对象等于紧对象, 以及 $f_*$ 保持余极限都要另外验证.
+
+叠上的自同构群也会影响有限性. 例如令 $k$ 的特征为 $p>0$, $G=C_p$, 并取 $q:B G->Spec k$. 单位对象 $cal(O)_(B G)$ 是线丛, 但由#link(<chap-quasi-coherent>)[第六章]的群上同调计算,
+$ H^i (q_* cal(O)_(B G)) tilde.eq Ext_(k[G])^i (k,k) tilde.eq k quad (i>=0) $
+最后一个等价可以直接验证: 写 $k[G] tilde.eq k[t] slash t^p$, 平凡模 $k$ 有微分交替为乘 $t$ 与乘 $t^(p-1)$ 的周期自由解消; 施加 $Hom_(k[G]) (-,k)$ 后所有微分为零. 所以前推有无限多个非零上同调, 并不完美. 推广到叠时, 必须检验这类上同调有限性.
+
+=== 在 $K_0$ 上的前推
+
+#corollary(title: [前推与 $K_0$ 的投影公式])[
+  设 $f:X->Y$ 的前推保持完美对象. 则它诱导群同态
+  $ f_*:K_0 (X)->K_0 (Y), quad [F] mapsto [f_* F] $
+  对 $x in K_0 (X)$ 和 $y in K_0 (Y)$, 有
+  $ f_* (x dot f^* y)=f_* (x) dot y $
+  即 $f_*$ 是 $K_0 (Y)$-模同态, 其中 $K_0 (X)$ 通过 $f^*$ 成为 $K_0 (Y)$-模.
+] <cor-perfect-k0-pushforward>
+
+#proof[
+  前推正合, 因而保持定义 $K_0$ 所用的纤维序列关系, 得到群同态. 对 $x=[F]$, $y=[E]$ 使用 @thm-prestack-projection-formula 并取类, 就得到公式; 再由可加性推广到所有元素.
+]
+
+前推一般不保持环的单位或乘法. 例如有限域扩张 $L slash k$ 的次数为 $d>1$ 时, $Spec L->Spec k$ 在 $K_0 tilde.eq ZZ$ 上的前推是乘 $d$. 对域上的适当概形, 结构态射的前推则正是前面#link(<ex-perfect-k0-global-euler>)[整体 Euler 特征]的构造.
