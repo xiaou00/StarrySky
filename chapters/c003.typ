@@ -676,7 +676,7 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
   扩域后可选一个避开伴随点的超平面, 用限制到超平面的正合列, 对 $N$ 归纳. 上同调长正合列把消失性和乘法的满射性逐次传到更高次数; 再结合 Serre 的整体生成定理, 得到 $cal(F)(m)$ 的整体生成性.
 ]
 
-#theorem(title:[前置定理: 统一正则性界])[
+#theorem(title:[统一正则性界])[
   固定 $N$ 和 $P in QQ[d]$. 存在只依赖于 $N,P$ 的整数 $m_0$, 使得对任意域 $k$ 和任意满足 $P_Z=P$ 的闭子概形 $Z subset PP_k^N$, 理想层 $cal(I)_Z$ 都是 $m_0$-正则的.
 
   这是有界性定理, 此处直接引用 @Stacks26[Tag 08AG], 取其中的秩为 $1$ 即可.
@@ -733,7 +733,7 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 
 余核与任意拉回相容, 所以这个构造对族同样有效. 但 $Z_G->G$ 一般还不平坦, 纤维的Hilbert多项式也未必是 $P$. 我们要从 $G$ 中取出恰好满足要求的部分.
 
-#theorem(title:[前置定理: 泛平坦分层])[
+#theorem(title:[泛平坦分层])[
   设 $Y->B$ 射影, $B$ 为Noetherian概形, $cal(F)$ 是 $Y$ 上的凝聚层, 并固定相对极丰沛线丛来计算Hilbert多项式. 则存在有限个局部闭子概形 $B_Q subset B$, 以出现的纤维Hilbert多项式 $Q$ 标号, 满足:
 
   任意态射 $T->B$ 经过 $B_Q$, 当且仅当 $cal(F)_T$ 对 $T$ 平坦, 且每条纤维的Hilbert多项式都是 $Q$.
@@ -779,7 +779,7 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
   若另一个延拓也平坦, 它的坐标环同样没有 $R$-挠元, 因而理想必是 $J_K$ 的收缩 $B inter J_K$. 这就证明了唯一性. Hilbert函子的赋值判据也见 @Stacks26[Tag 0DM8].
 ]
 
-#theorem(title:[Grothendieck存在定理: 射影空间情形])[
+#theorem(title:[射影空间上的Grothendieck存在定理])[
   表示概形 $H=Hilb_(PP_S^N slash S)^P$ 到 $G=Gr_(P(m)) (V_m)$ 的态射 $Phi_m$ 是闭嵌入. 特别地, $H->S$ 射影.
 ] <thm-hilbert-projective-space>
 

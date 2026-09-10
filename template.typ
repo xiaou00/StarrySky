@@ -318,6 +318,7 @@
   )
 
   set text(font: (latin-serif, source-han-serif), size: 11pt, lang: "zh", fill: ink)
+  set smartquote(enabled: false)
   show math.equation: set text(font: ("Libertinus Math", source-han-serif))
   set par(justify: true, leading: .72em, spacing: .9em)
   set list(indent: 1em, body-indent: .6em, marker: text(fill: blue, [•]))
@@ -522,7 +523,7 @@
         text(weight: "semibold", fill: color,
           label
           + if numbering { " " + number } else { "" }
-          + if title != "" { "（" + title + "）" } else { "" }
+          + if title != "" { " (" + title + ")" } else { "" }
           + ". "
         )
       }
@@ -546,7 +547,7 @@
   inset: (x: 16pt, y: 12pt), fill: mist, radius: 2pt,
   grid(
     columns: (18pt, 1fr), column-gutter: 5pt,
-    text(font: latin-serif, size: 30pt, fill: accent.lighten(38%), "“"),
+    text(font: latin-serif, size: 30pt, fill: accent.lighten(38%), "\""),
     text(fill: c-con, body),
   ),
 )

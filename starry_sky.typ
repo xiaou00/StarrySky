@@ -31,6 +31,8 @@
 
 #include "chapters/c007.typ"
 
+#include "chapters/c008.typ"
+
 #part[附录]
 
 #appendix[
@@ -40,4 +42,3 @@
 ]
 
 #references("references.bib")
-

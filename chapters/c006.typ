@@ -7,7 +7,7 @@
   doc,
 )
 
-= 拟凝聚 / Quasi-Coherent
+= 拟凝聚 / Quasi-Coherent <chap-quasi-coherent>
 
 == 拟凝聚模的定义
 
@@ -75,7 +75,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
 
   一个对象 $M$ 由所有这些模 $M_(A,x)$, 连同对每个 $(f,gamma):(A,x)->(B,y)$ 指定的等价组成:
   $ theta_(f,gamma):B⊗_A M_(A,x) stretch(->)^tilde M_(B,y) $
-  它们对恒等、复合及全部高阶同伦相容. 例如沿 $A->B->C$ 连做两次换系数, 应与直接沿 $A->C$ 换系数相容, 使用自然等价
+  它们对恒等, 复合及全部高阶同伦相容. 例如沿 $A->B->C$ 连做两次换系数, 应与直接沿 $A->C$ 换系数相容, 使用自然等价
   $ C⊗_B (B⊗_A M_(A,x)) tilde.eq C⊗_A M_(A,x) $
   态射则是一族相容的模映射, 同样带有相容同伦. 所以取这个极限, 就是在所有测试点上选择模, 并使它们随基变换一致. 参见 @Lur11DAG8[注 2.7.12].
 ]
@@ -89,7 +89,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
 ]
 
 #remark(title: "景与层从哪里开始用")[
-  定义 $Spec A$ 和 $QCoh(cal(F))$ 时, 只需测试范畴与函子, 不必指定 Grothendieck 拓扑, 也不要求 $cal(F)$ 是层. 后面的拉回、右伴随前推以及用整体截面谱定义上同调, 同样适用于本章的可达预层.
+  定义 $Spec A$ 和 $QCoh(cal(F))$ 时, 只需测试范畴与函子, 不必指定 Grothendieck 拓扑, 也不要求 $cal(F)$ 是层. 后面的拉回, 右伴随前推以及用整体截面谱定义上同调, 同样适用于本章的可达预层.
 
   从下一小节的*沿覆盖粘合*开始, 才真正使用景与下降: 普通概形使用 Zariski 覆盖, 代数叠使用光滑图册及平坦下降. 要区分两件事: 几何点函子的层条件允许粘合局部几何数据; *模范畴的下降定理*则允许粘合模及其态射. 后者保证对这样的覆盖 $U->X$, 及其 Čech 神经 $U_bullet$, 有
   $ QCoh(X) tilde.eq varprojlim([n] in Delta) QCoh(U_n) $
@@ -102,7 +102,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
 
 下面取普通域 $K$, 令 $Lambda=H K$. 将普通仿射 $K$-概形 $Spec R$ 看作由 $H R$ 表示的函子 $Spec(H R)$, 再沿覆盖粘合, 就能把普通 $K$-概形放入上述框架. 本章的 $QCoh$ 包含导出信息; 普通拟凝聚层范畴记为 $QCoh^"ord"$.
 
-#example(title: "仿射概形: 模与模复形")[
+#example(title: [仿射概形上的模与模复形])[
   对 $X=Spec R$, 前面的计算给出
   $ QCoh(X) tilde.eq Mod_(H R) tilde.eq Dcat(R), quad QCoh(X)^suit.heart tilde.eq Mod_R^"ord" $
   因此这里的对象可以理解为模复形, 而普通 $R$-模 $V$ 对应集中在零次的拟凝聚模, 也就是普通拟凝聚层 $tilde(V)$. 在主开集上, 它就是熟悉的局部化:
@@ -127,7 +127,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
   $ E^bullet=(dots -> E^(i-1) stretch(->)^(d^(i-1)) E^i stretch(->)^(d^i) E^(i+1) -> dots), quad d^i compose d^(i-1)=0 $
   它的第 $i$ 个*上同调层* (cohomology sheaf) 定义为
   $ cal(H)^i (E^bullet):=op("ker")(d^i) slash op("im")(d^(i-1)) $
-  核、像和商都在 $cal(O)_X$-模层的范畴中取. 直观上, 它保留第 $i$ 次中被下一步送到零、又尚未被上一步解释掉的局部数据.
+  核, 像和商都在 $cal(O)_X$-模层的范畴中取. 直观上, 它保留第 $i$ 次中被下一步送到零, 又尚未被上一步解释掉的局部数据.
 
   这里称 $E^bullet$ 为*拟凝聚复形* (quasi-coherent complex), 若每个 $cal(H)^i (E^bullet)$ 都是普通拟凝聚层. 拟凝聚性要求放在上同调层上; 逐项拟凝聚的复形自动满足这一条件. 将这些复形的准同构视为等价, 就得到普通概形上 $QCoh(X)$ 的经典复形描述. 因而对它所表示的拟凝聚模 $M$, 也记
   $ cal(H)^i (M):=cal(H)^i (E^bullet) $
@@ -140,7 +140,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
   *$cal(H)^i (M)$ 是 $X$ 上的层; $H^i (X,M)$ 则是先取整体截面模谱, 再读出次数得到的模.* 后者还会记录局部数据的粘合, 两者需要区分.
 ] <def-qcoh-complex-cohomology-sheaf>
 
-#definition(title: "拟凝聚层: 集中在零次的特殊情况")[
+#definition(title: [集中在零次的拟凝聚层])[
   设 $X$ 为普通概形. 一个普通 $cal(O)_X$-模层称为*拟凝聚层* (quasi-coherent sheaf), 若局部在仿射开集 $U=Spec R$ 上形如 $tilde(V)$, 其中 $V$ 是普通 $R$-模.
 
   按仿射开集上的标准 $t$-结构粘合, 得到 $QCoh(X)$ 的标准 $t$-结构. 上述普通拟凝聚层恰好组成它的心:
@@ -156,7 +156,7 @@ $ f^*:Mod_A->Mod_B, quad M mapsto B⊗_A M $
 
 对 $K$ 上的 Artin 叠 $cal(X)$, 选一个光滑满射图册 $U->cal(X)$, 记 $U_n$ 为 $n+1$ 个 $U$ 在 $cal(X)$ 上的纤维积. 平坦下降给出
 $ QCoh(cal(X)) tilde.eq varprojlim([n] in Delta) QCoh(U_n) $
-图表中的函子由拉回给出. 各层若是代数空间, 可以继续取平展仿射覆盖计算. 这就是把定义中“所有测试点上的相容数据”, 换成*一个图册及其重叠上的相容数据*. 参见 @Lur11DAG8[命题 2.7.14].
+图表中的函子由拉回给出. 各层若是代数空间, 可以继续取平展仿射覆盖计算. 这就是把定义中"所有测试点上的相容数据", 换成*一个图册及其重叠上的相容数据*. 参见 @Lur11DAG8[命题 2.7.14].
 
 对于普通拟凝聚层, 只需在 $U$ 上给出 $V$, 再在 $U_1$ 上给出同构
 $ theta:p_1^* V stretch(->)^tilde p_2^* V $
@@ -164,7 +164,7 @@ $ theta:p_1^* V stretch(->)^tilde p_2^* V $
 $ QCoh(cal(X))^suit.heart tilde.eq QCoh^"ord" (cal(X)) $
 参见 @Stacks26[Tags 06WU, 06WS], @Lur11DAG8[例 2.7.25].
 
-#example(title: "商叠: 拟凝聚模带有等变结构")[
+#example(title: [商叠上拟凝聚模的等变结构])[
   设光滑仿射群概形 $G slash K$ 作用于 $K$-概形 $X$. 图册 $X->[X slash G]$ 的各重叠是 $G times X,G times G times X,dots$, 因此
   $ QCoh([X slash G]) tilde.eq QCoh^G (X) $
   右边表示带相容 $G$-等变结构的拟凝聚模: 群作用移动底空间上的点, 同时给出模在这些点之间的识别. 等变性针对整个群概形的作用, 包括随基底变化的群元素. 参见 @Stacks26[Tags 043S, 06WS].
@@ -180,7 +180,7 @@ $ QCoh(cal(X))^suit.heart tilde.eq QCoh^"ord" (cal(X)) $
 
 == 导出拉回与导出前推
 
-回到一般的交换环谱 $Lambda$. 本节直接在稳定无穷范畴 $QCoh$ 之间定义拉回与前推. *这里的导出信息已经包含在模谱、映射生象与无穷范畴的极限中.* 本章统一使用 $f^*,f_*,Gamma$, 均按内蕴的导出意义理解.
+回到一般的交换环谱 $Lambda$. 本节直接在稳定无穷范畴 $QCoh$ 之间定义拉回与前推. *这里的导出信息已经包含在模谱, 映射生象与无穷范畴的极限中.* 本章统一使用 $f^*,f_*,Gamma$, 均按内蕴的导出意义理解.
 
 设 $f:cal(F)->cal(G)$ 是两个可达预层之间的态射, 即自然变换. 它把 $cal(F)$ 的测试点送到 $cal(G)$ 的测试点:
 $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
@@ -231,12 +231,12 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 
 张量积可以逐测试点计算; 内部 Hom 则使用上述伴随性质定义. 一般不能直接把各点的内部 Hom 拼起来, 因为内部 Hom 未必与扩张标量交换.
 
-#example(title: "仿射情形: 换系数与限制系数")[
+#example(title: [仿射情形下的换系数与限制系数])[
   对环谱态射 $A->B$ 及对应的 $f:Spec B->Spec A$, 有
   $ f^* M tilde.eq B⊗_A M, quad f_* N tilde.eq op("Res")_A^B N $
   左边把 $A$-模扩张为 $B$-模; 右边保持 $N$ 的底层谱, 只沿 $A->B$ 将它看作 $A$-模. 这正是上一章的扩张标量与限制标量伴随.
 
-  这也解释了为什么“限制相容族”会给出换系数: 在 $B$ 这个测试点, 原来的相容族就已经取值为 $B⊗_A M$.
+  这也解释了为什么"限制相容族"会给出换系数: 在 $B$ 这个测试点, 原来的相容族就已经取值为 $B⊗_A M$.
 
   这也是换底环的张量–Hom 伴随:
   $ Map_(Mod_B) (B⊗_A M,N) tilde.eq Map_(Mod_A) (M,op("Res")_A^B N) $
@@ -262,7 +262,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 ]
 
 #remark(title: "与普通层的关系")[
-  对普通概形之间的拟紧拟分离态射 $f:X->Y$, 上述函子与经典的导出拉回、导出前推在拟凝聚复形上的作用一致. 这里的复形与上同调层 $cal(H)^i$ 按 @def-qcoh-complex-cohomology-sheaf 理解. 若 $V,W$ 分别是 $Y,X$ 上的普通拟凝聚层, 则 $cal(H)^0 (f^* V)$ 是 $V$ 的普通拉回, $cal(H)^0 (f_* W)$ 是 $W$ 的普通前推. 经典的高阶前推正是
+  对普通概形之间的拟紧拟分离态射 $f:X->Y$, 上述函子与经典的导出拉回, 导出前推在拟凝聚复形上的作用一致. 这里的复形与上同调层 $cal(H)^i$ 按 @def-qcoh-complex-cohomology-sheaf 理解. 若 $V,W$ 分别是 $Y,X$ 上的普通拟凝聚层, 则 $cal(H)^0 (f^* V)$ 是 $V$ 的普通拉回, $cal(H)^0 (f_* W)$ 是 $W$ 的普通前推. 经典的高阶前推正是
   $ R^i f_* W:=cal(H)^i (f_* W) quad (i>=0) $
   所以 $f^* V,f_* W$ 一般会离开心; 它们保留整个导出对象, 取 $cal(H)^0$ 才回到普通层的运算. 仿射上, 拉回的零次恢复普通张量积, 负次上同调层记录 Tor; 前推的正次上同调层则记录高阶前推. 参见 @Stacks26[Tags 06YI, 079V, 08DY].
 ]
@@ -318,7 +318,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 ] <prop-qcoh-global-unit-counit>
 
 #proposition(title: "基本运算与整体函数环谱")[
-  $p^*$ 保持小余极限, $Gamma(cal(F),-)$ 保持小极限; 两者都保持纤维序列、余纤维序列与移位. 因而它们也保持有限直和. 这些是前面一般拉回与前推性质的直接应用.
+  $p^*$ 保持小余极限, $Gamma(cal(F),-)$ 保持小极限; 两者都保持纤维序列, 余纤维序列与移位. 因而它们也保持有限直和. 这些是前面一般拉回与前推性质的直接应用.
 
   $p^*$ 还保持张量积及单位, 即它是*对称幺半函子*:
   $ p^* (L⊗_Lambda N) tilde.eq p^* L⊗p^* N, quad p^* Lambda tilde.eq cal(O)_(cal(F)) $
@@ -326,7 +326,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 
   右伴随 $Gamma$ 因而带有*松对称幺半结构* (lax symmetric monoidal structure): 有自然映射
   $ Gamma(cal(F),M)⊗_Lambda Gamma(cal(F),N)->Gamma(cal(F),M⊗N) $
-  以及单位映射 $Lambda->Gamma(cal(F),cal(O)_(cal(F)))$. 这些映射与结合、交换、单位及全部高阶同伦相容, 但不要求为等价. 参见 @Lur17[推论 7.3.2.7].
+  以及单位映射 $Lambda->Gamma(cal(F),cal(O)_(cal(F)))$. 这些映射与结合, 交换, 单位及全部高阶同伦相容, 但不要求为等价. 参见 @Lur17[推论 7.3.2.7].
 
   特别地, *整体函数环谱*
   $ B:=Gamma(cal(F),cal(O)_(cal(F))) in CAlg_Lambda $
@@ -347,7 +347,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 
 == 拟凝聚模的上同调
 
-上一节的整体截面已经是一个模谱. 上同调就是把它按次数读出来. 对普通层, 第零次给出通常的截面, 更高次数还记录粘合、提升与扩张中的信息.
+上一节的整体截面已经是一个模谱. 上同调就是把它按次数读出来. 对普通层, 第零次给出通常的截面, 更高次数还记录粘合, 提升与扩张中的信息.
 
 === 定义与基本性质
 
@@ -406,7 +406,7 @@ $ H^i (cal(F),M) tilde.eq Hom_("h"QCoh(cal(F))) (cal(O)_(cal(F)),M[i]) $
 $ Gamma(X,M) -> Gamma(U,M) ⊕ Gamma(V,M) -> Gamma(U ∩ V,M) $
 这里省略了 $M$ 的限制记号, 第二条箭头是两个限制映射之差. 对普通层 $M$, 取长正合列便知: 交集上的截面给出 $H^1 (X,M)$ 中的一类; 该类为零, 当且仅当这个截面是两边截面之差.
 
-#example(title: "实际计算: 射影直线上的线丛")[
+#example(title: [射影直线上的线丛])[
   沿用前面 $PP_K^1$ 的两块覆盖, 线丛 $cal(O)(d)$ 的转移关系为 $e_V=t^d e_U$. 它的整体截面由以下两项复形表示, 两项分别在第 $0,1$ 次:
   $ K[t] ⊕ K[t^(-1)] stretch(->)^((a,b) mapsto a-t^d b) K[t,t^(-1)] $
   所以零次上同调是核, 第一次是余核:
@@ -426,7 +426,7 @@ $ Gamma(cal(X),M) tilde.eq varprojlim([a] in Delta) Gamma(U_a,M_a) $
 $ E_1^(a,b)=H^b (U_a,V_a) ==> H^(a+b) (cal(X),V) $
 第一条微分仍是面映射的交错和. 谱序列的极限页给出目标上同调的一个滤过及其相邻商. 若每个 $U_a$ 都仿射, 就只需计算 $H^0 (U_bullet,V_bullet)$ 的上链复形. 参见 @Stacks26[Tag 0784].
 
-#example(title: "分类叠: 取不变量也有上同调")[
+#example(title: [分类叠上的不变量与上同调])[
   设 $G$ 是域 $K$ 上的光滑仿射群, $V$ 是代数表示, 也视作 $B G$ 上的普通拟凝聚层. 则
   $ H^0 (B G,V)=V^G $
   高阶上同调计算取不变量的右导出函子. 图册 $Spec K->B G$ 的各层是 $G^a$, 因而得到通常的代数群上同调复形.
@@ -438,7 +438,7 @@ $ E_1^(a,b)=H^b (U_a,V_a) ==> H^(a+b) (cal(X),V) $
   所以, 叠的上同调还会记录*自同构群作用带来的高阶信息*. 上述计算都使用拟凝聚系数.
 ]
 
-=== 前推、Leray 谱序列与有限性
+=== 前推, Leray 谱序列与有限性
 
 由前推的复合性, 对任意可达预层态射 $f:cal(F)->cal(G)$ 都有
 $ Gamma(cal(G),f_* M) tilde.eq Gamma(cal(F),M) $
@@ -472,121 +472,4 @@ $ H^i (cal(G),N) -> H^i (cal(F),f^* N) $
 
 实际计算时, 先选方便的仿射覆盖或图册, 写出限制映射, 再计算相应复形的核与像. 遇到短正合列就用长正合列, 遇到态射就用前推和 Leray 谱序列; 紧合性与 Serre 消失则控制答案的有限性和可能出现的次数.
 
-== 向量丛与线丛
-
-向量丛是局部最简单的拟凝聚模: 选好局部基以后, 它就是若干份单位模. 线丛则只需一个基向量. 以下仍对一般的可达预层 $cal(F):CAlg_Lambda->Ani$ 讨论, 并沿用测试点上的记号 $E_(A,x) tilde.eq x^* E$.
-
-=== 局部自由条件
-
-#definition(title: "环谱上的局部自由模")[
-  (回顾 @def-spectral-localization) 称 $A$-模 $P$ *局部自由, 秩为 $r$*, 若有有限多个 $f_j in pi_0 A$ 生成单位理想, 使
-  $ A[f_j^(-1)]⊗_A P tilde.eq A[f_j^(-1)]^(⊕r) $
-  这里 $r>=0$. 这些局部化对应普通概形 $Spec(pi_0 A)$ 的主开覆盖. 换句话说, *局部选基以后, $P$ 就是 $r$ 份 $A$*. 这个定义直接使用环谱局部化, 也适用于本章的非连通测试代数. 连通情形参见 @Lur11DAG8[定义 2.7.29, 注 2.7.30].
-] <def-locally-free-spectral-module>
-
-#definition(title: "向量丛与线丛")[
-  称 $E in QCoh(cal(F))$ 为*秩 $r$ 的向量丛* (vector bundle), 若对每个测试点 $(A,x)$, $E_(A,x)$ 都是秩 $r$ 的局部自由 $A$-模. 秩 $1$ 的向量丛称为*线丛* (line bundle).
-
-  本节先固定秩; 不固定秩时, 允许秩在局部常值地变化. 将秩 $r$ 的向量丛及其等价组成的生象记为 $cat("Vect")_r (cal(F))$. 它保留自同构及其高阶同伦. 参见 @Lur11DAG8[第 2.7 节末].
-] <def-qcoh-vector-line-bundles>
-
-#remark(title: "怎样回到普通向量丛")[
-  若 $A=H R$ 来自普通环, 上述模恰好是 $H P_0$, 其中 $P_0$ 是秩 $r$ 的有限投射 $R$-模. 因而在普通概形 $X$ 上, 向量丛就是普通的有限局部自由 $cal(O)_X$-模层, 属于 $QCoh(X)$ 的心; 普通 Artin 叠上可在光滑图册上检验这一点.
-
-  对一般环谱, 局部平凡模 $A^(⊕r)$ 自身就可能有高阶同伦, 且 $pi_i (A^(⊕r)) tilde.eq (pi_i A)^(⊕r)$. 所以这里的秩数的是*单位模的份数*. 在普通几何点 $x:Spec K->X$ 上, 则恢复熟悉的 $r$ 维向量空间. 参见 @Stacks26[Tags 01I6, 00NX].
-]
-
-=== 拉回、下降与对偶
-
-#proposition(title: "向量丛可以拉回和粘合")[
-  任意预层态射 $f:cal(F)->cal(G)$ 的拉回保持向量丛及其秩, 特别保持线丛. 这是因为扩张标量把 $A^(⊕r)$ 送到 $B^(⊕r)$, 并把主开覆盖拉成主开覆盖.
-
-  向量丛满足 Zariski 下降. 若 $cal(F)$ 是 Zariski 层, $U->cal(F)$ 是 Zariski 覆盖, $U_bullet$ 是其 Čech 神经, 则在生象中有
-  $ cat("Vect")_r (cal(F)) tilde.eq varprojlim([n] in Delta) cat("Vect")_r (U_n) $
-  在连通环谱的测试范畴中, 同样有 fpqc 下降. 因而对普通 Artin 叠, 可以沿光滑图册粘合向量丛. 证明就是先下降拟凝聚模, 再用局部自由性可平坦局部检验. 参见 @Lur11DAG8[命题 2.7.14, 2.7.31].
-] <prop-vector-bundle-descent>
-
-#proposition(title: "有限维线性代数仍然成立")[
-  若 $E,F$ 分别是秩 $r,s$ 的向量丛, 则 $E⊕F$ 与 $E⊗F$ 仍是向量丛, 秩分别为 $r+s$ 与 $r s$. 定义*对偶向量丛*
-  $ E^or:=underline(Hom)_(cal(F)) (E,cal(O)_(cal(F))) $
-  它仍有秩 $r$, 并且对每个 $M in QCoh(cal(F))$ 有
-  $ E^(or or) tilde.eq E, quad underline(Hom)_(cal(F)) (E,M) tilde.eq E^or⊗M $
-  这些构造与任意拉回相容. 特别地,
-  $ f^* (E^or) tilde.eq (f^* E)^or, quad Ext_(cal(F))^i (E,M) tilde.eq H^i (cal(F),E^or⊗M) $
-  所以从向量丛出发的映射与扩张, 可以转成张量后取上同调.
-] <prop-vector-bundle-duality>
-
-#proofsketch[
-  局部把 $E$ 写成 $A^(⊕r)$, 内部 Hom 就是 $r$ 份目标模, 因而上述公式都是有限自由模的计算. 对偶与求值映射在换基下相容, 所以能粘合. 这也说明向量丛是可对偶对象. 参见 @Lur11DAG8[命题 2.7.28].
-]
-
-=== 线丛、扭曲与自同构
-
-#proposition(title: "线丛可以张量相消")[
-  对线丛 $L$, 求值映射给出等价
-  $ L^or⊗L tilde.eq cal(O)_(cal(F)) $
-  因而 $M mapsto M⊗L$ 是 $QCoh(cal(F))$ 的自等价, 逆为张量 $L^or$. 这个操作称为用 $L$ *扭曲* $M$. 对 $n<0$, 约定 $L^(⊗n):=(L^or)^(⊗(-n))$, 而 $L^(⊗0):=cal(O)_(cal(F))$.
-
-  记线丛及其等价组成的 Picard 生象为
-  $ underline(Pic)(cal(F)):=cat("Vect")_1 (cal(F)), quad Pic(cal(F)):=pi_0 underline(Pic)(cal(F)) $
-  张量积、单位线丛和对偶使它成为 Picard 无穷群胚; 取连通分支后, $Pic(cal(F))$ 是 Abel群. 普通概形上, 这就是前面的 Picard 群. 参见 @Stacks26[Tag 01CR].
-] <prop-qcoh-lines-picard>
-
-#remark(title: "线丛与一般可逆对象")[
-  在稳定范畴中, 称 $M$ *张量可逆*, 是指存在 $N$ 使 $M⊗N tilde.eq cal(O)_(cal(F))$. 线丛都可逆, 但这个条件允许更多对象: 对非空普通概形 $X$,
-  $ cal(O)_X [1]⊗cal(O)_X [-1] tilde.eq cal(O)_X $
-  而 $cal(O)_X [1]$ 不在心中, 所以不是这里定义的线丛. 因此本节的 $underline(Pic)$ 专指秩一向量丛; 若研究全部张量可逆对象, 会得到更大的 Picard 生象.
-]
-
-#proposition(title: "线丛的自同构是可逆整体函数")[
-  对交换环谱 $B$, 定义 $GL_1(B)$ 为 $Omega^oo B$ 中对应于 $(pi_0 B)^times$ 的那些连通分支; 乘法使它成为群生象. 对任意线丛 $L$, 有
-  $ Aut_(QCoh(cal(F))) (L) tilde.eq GL_1(Gamma(cal(F),cal(O)_(cal(F)))) $
-  这是因为 $underline(Hom)_(cal(F)) (L,L) tilde.eq cal(O)_(cal(F))$, 而自同构正是其中可逆的映射. 取连通分支, 得到 $(H^0 (cal(F),cal(O)_(cal(F))))^times$.
-
-  特别地, 普通概形上线丛的自同构就是乘以可逆整体函数. 一般环谱则还保留高阶自同伦: 在单位元处, $pi_i GL_1(B) tilde.eq pi_i B$ 对 $i>0$ 成立.
-] <prop-line-bundle-automorphisms>
-
-=== 标架与分类预层
-
-对环谱 $A$, 定义 $GL_r (A):=Aut_(Mod_A) (A^(⊕r))$. 它由可逆的 $A$-线性换基组成; $pi_0 GL_r (A) tilde.eq GL_r (pi_0 A)$, 但整个 $GL_r (A)$ 可以有高阶同伦. 普通环 $R$ 则给出离散群 $GL_r (H R) tilde.eq GL_r (R)$.
-
-#definition(title: "向量丛的分类预层")[
-  定义
-  $ (B GL_r)(A):=cat("Vect")_r (Spec A) $
-  沿 $A->B$ 的映射由扩张标量给出. 由下降, 这是 Zariski 层. 它也可以从只有对象 $A^(⊕r)$、自同构为 $GL_r (A)$ 的无穷群胚出发, 对所得预层作 Zariski 层化得到: 层化加入了局部自由模的各种粘合.
-
-  对任意可达预层 $cal(F)$, 有自然等价
-  $ cat("Vect")_r (cal(F)) tilde.eq Map_(PSh) (cal(F),B GL_r) $
-  右边表示预层之间自然变换的生象. 秩一时记 $bb(G)_m:=GL_1$, 从而 $underline(Pic)(cal(F)) tilde.eq Map_(PSh) (cal(F),B bb(G)_m)$. 限制到普通环, 就恢复前面的分类叠.
-] <def-spectral-bundle-classifier>
-
-#proofsketch[
-  给定 $E$, 在每个 $(A,x)$ 处送出 $E_(A,x)$, 就得到 $cal(F)->B GL_r$. 反过来, 一个这样的自然变换给出各测试点上的局部自由模及其全部换基相容性, 正好组成 $E$.
-
-  更直观地说, $E$ 在 $(A,x)$ 上的*标架*是等价 $A^(⊕r) stretch(->)^tilde E_(A,x)$. 换基群 $GL_r (A)$ 通过预合成作用于标架. 当 $cal(F)$ 是层时, 这些标架组成 $cal(F)$ 上 Zariski 局部平凡的 $GL_r$-挠子. 因而向量丛的分类记录了*局部基怎样粘合*, 也保留换基产生的自同构.
-]
-
-=== 几何图像与普通情形的行列式
-
-#remark(title: "把模看成一族向量")[
-  若希望看到向量丛的总空间, 可以直接定义预层 $bb(V)(E)->cal(F)$: 它在 $A$ 上的对象是一个 $x in cal(F)(A)$, 连同一个 $A$-模映射 $s:A->E_(A,x)$, 并保留全部同伦. 在 $E$ 平凡的地方, 每条纤维就是 $(Omega^oo A)^r$; 普通环上恢复 $A^r$.
-
-  一个截面就是在所有测试点上相容地选择向量. 因而其截面生象为
-  $ Map_(slash cal(F)) (cal(F),bb(V)(E)) tilde.eq Omega^oo U_Lambda Gamma(cal(F),E) $
-  左边是在 $cal(F)$ 上取态射, $U_Lambda$ 忘却模的系数. 当 $cal(F)=X$ 是普通概形, 并限制到普通环测试时, 这恢复经典的总空间 $Spec_X (op("Sym")_(cal(O)_X) (E^or))$, 普通截面组成 $H^0 (X,E)$.
-]
-
-#proposition(title: "普通向量丛的行列式")[
-  设 $X$ 是普通概形或普通 Artin 叠, $E$ 是秩 $r$ 的向量丛. 用普通局部自由模的外幂定义*行列式线丛*
-  $ det E:=and.big^r E $
-  若 $E$ 的转移矩阵是 $g_(i j)$, 则 $det E$ 的转移函数就是 $det(g_(i j))$. 因而行列式与拉回相容, 并有
-  $ det(E⊕F) tilde.eq det E⊗det F, quad det(E^or) tilde.eq (det E)^or $
-  对普通向量丛的短正合列 $0->E'->E->E''->0$, 还有 $det E tilde.eq det E'⊗det E''$. 这些公式都可局部选基验证, 再由下降粘合. 参见 @Stacks26[Tag 0B37].
-] <prop-classical-vector-determinant>
-
-#example(title: "两个熟悉的用法")[
-  - 在 $PP_K^1$ 上, $cal(O)(d)$ 的转移函数是 $t^d$. 张量积使转移函数相乘, 所以 $cal(O)(a)⊗cal(O)(b) tilde.eq cal(O)(a+b)$, 对偶则为 $cal(O)(-d)$.
-  - 设 $G$ 是域 $K$ 上的光滑仿射群概形. 在普通分类叠 $B G$ 上, 向量丛就是 $G$ 的有限维代数表示. 直和、张量积、对偶与行列式分别成为表示的同名运算; 线丛则是一维表示, 即特征标 $G->bb(G)_m$.
-]
-
-实际使用时, 先在覆盖上把向量丛写成自由模, 把问题变成矩阵计算; 换基相容性负责粘合. 要算映射就用对偶与整体截面, 要改变系数或参数就拉回, 要记录线丛的扭曲就使用张量积与 Picard 群.
+局部自由的拟凝聚模, 即向量丛与线丛, 将在#link(<sec-perfect-vector-bundles>)[完美复形一章]中统一讨论.

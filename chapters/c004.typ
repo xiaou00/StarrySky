@@ -437,7 +437,7 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
 
 下面的例子在域 $k$ 上讨论, 特殊假设另行说明.
 
-=== 有限群: 对称与覆盖的扭曲
+=== 有限群与覆盖的扭曲
 
 #example(title:[有限群的分类叠])[
   设 $H$ 为有限抽象群, 视为常值群概形. $B H(T)$ 分类有限平展的 $H$-挠子 $E->T$: 每条几何纤维是一个带自由传递 $H$-作用的有限集合, 但没有选定起点. 它不必是连通覆盖.
@@ -463,7 +463,7 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
   在特征 $p$ 下, $mu_p=Spec(k[z] slash (z^p-1))$ 有非约化结构. 它有限平坦, 所以 $B mu_p$ 仍是Artin叠, 但自同构群 $mu_p$ 非分歧的条件不成立, 因而不是DM叠. $mu_p(k)$ 只有单位元, 正好说明只数域值自同构会漏掉信息.
 ]
 
-=== 加法群: 允许更换原点
+=== 加法群与原点的选择
 
 #example(title:[$B bb(G)_a$ 分类什么])[
   加法群 $bb(G)_a$ 的挠子是一族带固定平移方向的仿射直线: 局部可以选原点, 两个选择之间相差一个函数. 在开覆盖上, 转移写成
@@ -491,7 +491,7 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
 ]
 ]
 
-=== 乘法群: 线丛及其截面
+=== 乘法群与线丛及其截面
 
 #example(title:[仿射直线的伸缩商])[
   让 $bb(G)_m$ 通过 $a dot z=a z$ 作用在 $AA^1$ 上. 则
@@ -673,14 +673,14 @@ $ cal(O)_T ->^~ (p_T)_* cal(O)_(X_T) $
 
 以下令 $k$ 为代数闭域.
 
-#example(title:[射影空间: 每个次数上一份 $B bb(G)_m$])[
+#example(title:[射影空间的Picard叠])[
   对 $n>=1$, 选定 $PP_k^n$ 上的一点后, 有
   $ underline(Pic)_(PP_k^n slash k) tilde.eq coprod_(d in ZZ) B bb(G)_m $
   在第 $d$ 部分, 一个族就是 $cal(O)_(PP_T^n) (d) times.o p_T^* cal(N)$, 其中 $cal(N)$ 是 $T$ 上的线丛. Picard概形只记录局部常值的次数 $d$, Picard叠还记录 $cal(N)$ 及其同构.
 ]
 
 #block(breakable: false)[
-#example(title:[曲线: Jacobian上的伸缩对称])[
+#example(title:[曲线的Jacobian与伸缩对称])[
   设 $C slash k$ 是属 $g$ 的光滑射影连通曲线. 次数给出开闭分解
   $ underline(Pic)_(C slash k)=coprod_(d in ZZ) underline(Pic)_(C slash k)^d $
   选定 $x in C(k)$ 后, 由 @prop-picard-curve 与 @prop-picard-stack-rigidification 得到
@@ -889,7 +889,7 @@ $ cal(H):=Hilb_(PP_ZZ^N slash ZZ)^(P_(g,m)) $
 ]
 ]
 
-=== 取商叠: 忘掉射影标架
+=== 取商叠以忘掉射影标架
 
 以下简记
 $ H:=H_(g,m), quad G:=op("PGL")_(r,ZZ) $
