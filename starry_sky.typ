@@ -35,6 +35,14 @@
 
 #include "chapters/c009.typ"
 
+#include "chapters/c010.typ"
+
+#include "chapters/c011.typ"
+
+#part[群对象]
+
+#include "chapters/c012.typ"
+
 #part[附录]
 
 #appendix[
@@ -44,4 +52,3 @@
 ]
 
 #references("references.bib")
-

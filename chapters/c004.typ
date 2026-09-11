@@ -7,13 +7,12 @@
   doc,
 )
 
-= 模叠 / Moduli Stacks
+= 模叠 / Moduli Stacks <chap-moduli-stacks>
 
-== 粗模空间
+== 粗模空间 <sec-coarse-moduli>
 
 Hilbert与Quot能精确分类族, 但它们还记着嵌入或商映射. 若忘掉这些额外数据, 只分类对象本身, 精模空间就未必存在. 这个困难在线丛上已经出现了.
 
-#block(breakable: false)[
 #example(title:[线丛为什么没有精模空间])[
   在域 $k$ 上, 考虑模函子
   $ F_"line" (T)={T "上的线丛"} slash tilde.eq $
@@ -25,13 +24,11 @@ Hilbert与Quot能精确分类族, 但它们还记着嵌入或商映射. 若忘�
   $ f|_(U_i)=g|_(U_i), quad i=0,1 $
   由代数空间的层性, 得到 $f=g$, 矛盾. 所以这个函子没有精模空间.
 ] <ex-line-family-obstruction>
-]
 
 问题在于, *局部同构的族可能整体不同构*, 而映向代数空间的态射由局部限制唯一确定. 同样的论证说明: 对任何模函子 $F$ 和自然变换 $F->h_M$, 局部同构的两个族都必须给出同一个 $T->M$. 只要这种族整体不同构, 分类映射就不可能是双射.
 
 因此, 若仍希望用代数空间研究分类, 就必须放宽对族的要求: 每个族给出一个态射, 几何点仍准确记录单个对象的同构类, 但允许不同的族给出同一态射. 寻找这样的空间及其万有性, 就是这里的*粗模问题*.
 
-#block(breakable: false)[
 #definition(title:[粗模空间的函子表述])[
   设 $F:(Sch_S)^opp->Set$ 为记录族的同构类的模函子. 一个 $S$-代数空间 $M$ 连同自然变换
   $ eta:F->h_M, quad h_M (T)=Hom_S (T,M) $
@@ -46,7 +43,6 @@ Hilbert与Quot能精确分类族, 但它们还记着嵌入或商映射. 若忘�
 
   函子语言下的定义见 @Hos15[定义 2.24]; 这里允许目标为代数空间, 并对所有代数闭域值点提出要求.
 ] <def-coarse-moduli>
-]
 
 #remark(title:[放宽了什么])[
   自然性保证分类与拉回相容, 万有性保证其他以代数空间为值的分类都经过 $M$. 它也保证粗模空间唯一到与 $eta$ 相容的唯一同构.
@@ -54,7 +50,6 @@ Hilbert与Quot能精确分类族, 但它们还记着嵌入或商映射. 若忘�
   @def-fine-moduli 要求每个 $eta_T$ 都是双射; 粗模空间只要求代数闭域值点上的双射, 一般没有分类所有族的万有族. 这里说明的是放宽要求的必要性, 粗模空间的存在仍需另行证明.
 ]
 
-#block(breakable: false)[
 #example(title:[线丛的粗模空间是一个点])[
   对上面的 $F_"line"$, 取
   $ M=Spec k, quad eta_T:F_"line" (T)->{T->Spec k} $
@@ -64,11 +59,10 @@ Hilbert与Quot能精确分类族, 但它们还记着嵌入或商映射. 若忘�
 
   这个点记录了每条纤维都是一维空间, 却不能区分 $PP_k^1$ 上的 $cal(O)$ 与 $cal(O)(1)$. 点上的线丛拉回后总是平凡的, 因而无法作为所有线丛的万有族.
 ]
-]
 
-== Picard概形
+== Picard概形 <sec-picard-scheme>
 
-上一节让一维向量空间随参数变化. 现在固定一个概形 $X$, 研究 *$X$ 上的线丛怎样变化*. 以下取 $k$ 为代数闭域, $X$ 为非空的光滑射影连通 $k$-概形, 并记
+#link(<sec-coarse-moduli>)[上一节]让一维向量空间随参数变化. 现在固定一个概形 $X$, 研究 *$X$ 上的线丛怎样变化*. 以下取 $k$ 为代数闭域, $X$ 为非空的光滑射影连通 $k$-概形, 并记
 $ X_T=X times_k T, quad p_T:X_T->T $
 
 === 线丛的粗模问题
@@ -164,12 +158,10 @@ $ cal(L), quad cal(L) times.o p_T^* cal(N) $
 
 === 射影空间与曲线
 
-#block(breakable: false)[
 #example(title:[射影空间的Picard概形])[
   对 $n>=1$, 有
   $ Pic_(PP_k^n slash k) tilde.eq coprod_(d in ZZ) Spec k $
   第 $d$ 个点对应 $cal(O)(d)$. 确实, 线丛的同构类由整数 $d$ 分类, 而 $H^1 (PP_k^n,cal(O))=0$ 保证这些点没有无穷小方向. 每个分支上的Poincaré线丛就是 $cal(O)(d)$. 这个例子也说明, 完整Picard概形未必有限型.
-]
 ]
 
 #proposition(title:[曲线的Picard概形与Jacobian])[
@@ -182,7 +174,6 @@ $ cal(L), quad cal(L) times.o p_T^* cal(N) $
 
 曲线上的次数在族中局部常值, 所以它先把Picard概形分成一层层的 $Pic^d$. 固定次数后, 线丛的变化就在一个Jacobian的平移中进行.
 
-#block(breakable: false)[
 #proposition(title:[从Hilbert到Picard的Abel态射])[
   对 $d>=0$, 有态射
   $ A_d:Hilb_(C slash k)^d -> Pic_(C slash k)^d, quad D |-> [cal(O)_C (D)] $
@@ -190,7 +181,6 @@ $ cal(L), quad cal(L) times.o p_T^* cal(N) $
   $ |cal(L)| tilde.eq PP_k (H^0 (C,cal(L))^or) $
   即非零截面相差非零标量后得到的空间. 这里的对偶与前文的射影空间商约定一致. 当 $d>=max(2g-1,0)$ 时, $A_d$ 是纤维为 $PP_k^(d-g)$ 的射影丛. 参见 @Stacks26[Tag 0BA0].
 ] <prop-picard-abel>
-]
 
 #proofsketch[
   非零截面的零点给出有效除子, 相差非零标量时除子相同. 当 $d>=max(2g-1,0)$ 时, Riemann--Roch给出 $H^1 (C,cal(L))=0$ 与 $h^0 (C,cal(L))=d+1-g$. 因而次数 $d$ 部分的Poincaré线丛的直接像局部自由, 并与基变换相容; 其对偶的射影丛正是 $A_d$.
@@ -202,7 +192,7 @@ $ cal(L), quad cal(L) times.o p_T^* cal(N) $
 
 === 把同构保留下来
 
-回到本章开头: $PP_k^1$ 上的 $cal(O)$ 与 $cal(O)(1)$ 局部同构, 整体却不同构. 它们的区别藏在粘合时选取的同构里. 如果先取同构类, 这些粘合数据就丢失了. 因此, 我们现在让参数 $T$ 对应一个*群胚*: 对象是 $T$ 上的族, 箭头是族之间的同构.
+回到#chapter-ref(<sec-coarse-moduli>)开头: $PP_k^1$ 上的 $cal(O)$ 与 $cal(O)(1)$ 局部同构, 整体却不同构. 它们的区别藏在粘合时选取的同构里. 如果先取同构类, 这些粘合数据就丢失了. 因此, 我们现在让参数 $T$ 对应一个*群胚*: 对象是 $T$ 上的族, 箭头是族之间的同构.
 
 以下重新允许任意基底概形 $S$, 在 $(Sch_S)_"fppf"$ 上讨论. 拉回给出 @def-groupoid-prestack 中的反变伪函子
 $ cal(X):(Sch_S)^opp->Grpd $
@@ -214,7 +204,6 @@ $ cal(X):(Sch_S)^opp->Grpd $
 
 要给叠配上代数几何的结构, 先要能谈论它的图册和图册之间的重叠. 这里的重叠也要记住同构.
 
-#block(breakable: false)[
 #definition(title:[$2$-纤维积])[
   给定叠的态射 $cal(U)->^f cal(X)<-^g cal(V)$, 定义 $cal(U) times_cal(X) cal(V)$ 的 $T$ 上对象为三元组
   $ (u,v,alpha), quad u in cal(U)(T), quad v in cal(V)(T), quad alpha:f(u)->^~g(v) $
@@ -222,7 +211,6 @@ $ cal(X):(Sch_S)^opp->Grpd $
   $ g(b) compose alpha=alpha' compose f(a) $
   拉回逐项进行. 下文涉及叠的纤维积, 都按这个意义理解.
 ] <def-stack-fibre-product>
-]
 
 因此, $U times_cal(X) V$ 的点还记录了两边的族*通过哪个同构被识别*. 当所有对象都是代数空间时, 这就回到通常的纤维积.
 
@@ -246,7 +234,7 @@ $ cal(X):(Sch_S)^opp->Grpd $
   右边的对象是一个族 $z$ 及同构 $a:z->^~xi$, $b:z->^~eta$. 将它送到 $b compose a^(-1)$, 就得到左边; 反过来取 $z=xi$, $a=id$. 这给出所需等价.
 ]
 
-特别地, 取 $xi=eta$, 就得到自同构群层 $underline(Aut)_T (xi)$. 所以对角态射的可表性要求: *族之间的同构也能组成代数空间*. 这正是第一章中让箭头本身带上几何结构的想法.
+特别地, 取 $xi=eta$, 就得到自同构群层 $underline(Aut)_T (xi)$. 所以对角态射的可表性要求: *族之间的同构也能组成代数空间*. 这正是#chapter-ref(<chap-animae>)中让箭头本身带上几何结构的想法.
 
 === 两种图册
 
@@ -261,29 +249,25 @@ $ cal(X):(Sch_S)^opp->Grpd $
 
 图册给出一个由概形 $U$ 参数化的族. 满射性意味着: 任何族在适当的覆盖上, 都同构于这个族的拉回. 平展图册更严格, 因而每个DM叠都是Artin叠.
 
-#block(breakable: false)[
 #definition(title:[$DMSt$ 与 $ArtSt$])[
   记生象值fppf层组成的无穷意象为
   $ cal(H)_S:=Sh_(Ani) ((Sch_S)_"fppf") $
-  定义 $ArtSt_S$ 为其中所有Artin叠组成的*全子范畴*, $DMSt_S$ 为其中所有DM叠组成的全子范畴. 基底明确时可省去下标 $S$. 由第二章的叠与截断的对应, 有
+  定义 $ArtSt_S$ 为其中所有Artin叠组成的*全子范畴*, $DMSt_S$ 为其中所有DM叠组成的全子范畴. 基底明确时可省去下标 $S$. 由#chapter-ref(<chap-topoi>)的叠与截断的对应, 有
   $ DMSt_S subset.eq ArtSt_S subset.eq (cal(H)_S)_(<=1) subset.eq cal(H)_S $
   特别地, 对 $cal(X),cal(Y) in ArtSt_S$, 有
   $ Map_(ArtSt_S) (cal(X),cal(Y)) tilde.eq Map_(cal(H)_S) (cal(X),cal(Y)) $
   对 $DMSt_S$ 也一样. 也就是说, *叠态射就是这个无穷意象内的态射*. 可表性, 光滑性等是态射的附加性质.
 ] <def-dm-artin-categories>
-]
 
 #remark(title:[也可以看成 $(2,1)$-范畴])[
   上述映射生象都是 $1$-截断的, 因而可用群胚描述. 其中对象是叠的 $1$-态射, 即与拉回相容的函子族 $f_T:cal(X)(T)->cal(Y)(T)$; 箭头是这些函子族之间相容的自然同构, 即 $2$-同构. 所以 $DMSt_S$ 与 $ArtSt_S$ 也可看成 $(2,1)$-范畴. 这里始终保留这些 $2$-同构, 与经典表述一致. 参见 @Stacks26[Tag 03YP].
 ]
 
-#block(breakable: false)[
 #proposition(title:[DM条件的另一种读法])[
   对Artin叠 $cal(X)$, 有
   $ cal(X) "是DM叠" quad <==> quad Delta_cal(X) "非分歧" $
   证明略, 见 @Stacks26[Tag 06N3].
 ] <prop-dm-diagonal>
-]
 
 结合 @prop-stack-diagonal-isom, 这意味着同构的无穷小提升至多有一个. 特别地, DM叠没有非平凡的无穷小自同构. 判断时要检查自同构群的概形结构, 仅看域值点的个数还不够.
 
@@ -306,7 +290,7 @@ $ cal(X) tilde.eq [U slash R] $
 ] <ex-bg-algebraic-stack>
 
 #proposition(title:[Picard叠与Picard概形])[
-  回到上一节关于 $X slash k$ 的假设, 记 $P=Pic_(X slash k)$, 并选定 $x in X(k)$. 令 $underline(Pic)_(X slash k)(T)$ 为 $X_T$ 上的线丛及其同构组成的群胚, 称为*Picard叠*. 则有叠的等价
+  回到#link(<sec-picard-scheme>)[Picard概形一节]关于 $X slash k$ 的假设, 记 $P=Pic_(X slash k)$, 并选定 $x in X(k)$. 令 $underline(Pic)_(X slash k)(T)$ 为 $X_T$ 上的线丛及其同构组成的群胚, 称为*Picard叠*. 则有叠的等价
   $ underline(Pic)_(X slash k) tilde.eq P times_k B bb(G)_m $
   因而Picard叠是Artin叠, 且不是DM叠. 到粗模空间 $P$ 的态射就是第一投影.
 ] <prop-picard-stack-product>
@@ -483,12 +467,10 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
   此时数据是一个函数 $f in Gamma(T,cal(O)_T)$, 再加一个独立的加法群挠子.
 ]
 
-#block(breakable: false)[
 #example(title:[特殊纤维出现的平移对称])[
   考虑 $a dot (x,y)=(x,y+a x)$. 记商叠为 $cal(Y)=[AA^2 slash bb(G)_a]$, 函数 $x$ 下降为 $cal(Y)->AA^1$. 在 $x!=0$ 处可唯一用平移消去 $y$, 而在 $x=0$ 处整个群都固定 $y$. 因此
   $ cal(Y)|_(x!=0) tilde.eq bb(G)_m, quad cal(Y) times_(AA^1) {0} tilde.eq AA^1 times B bb(G)_a $
   这个族展示了自同构如何在特殊纤维中出现.
-]
 ]
 
 === 乘法群与线丛及其截面
@@ -523,7 +505,6 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
   这里更换基后仍保留商映射 $cal(E)_T->>cal(Q)$, 它消去了所有相容自同构. 这解释了为何 $B GL_r$ 是叠, 而这个矩阵商却是精模概形.
 ]
 
-#block(breakable: false)[
 === 商叠上的计算
 
 #proposition(title:[不变量与等变层])[
@@ -537,7 +518,6 @@ $ [x slash g] tilde.eq x times B g, quad B g=[1 slash g] $
   $ QCoh([U slash G]) tilde.eq QCoh^G (U) $
   右边是带 $G$-等变结构的拟凝聚层. 对向量丛同样成立. 在域 $k$ 上, $B G$ 上的向量丛就是 $G$ 的有限维代数表示; 例如 $bb(G)_m$ 的权重 $d in ZZ$ 给出 $B bb(G)_m$ 上的线丛, 沿分类 $cal(L)$ 的态射拉回后成为 $cal(L)^(times.o d)$, 负次幂按对偶理解.
 ] <prop-quotient-stack-calculation>
-]
 
 #remark(title:[维数也要扣除对称的维数])[
   设 $U$ 为纯 $n$ 维的光滑 $k$-概形, $G$ 为 $d$ 维光滑 $k$-群概形. 因为图册 $U->[U slash G]$ 的相对维数是 $d$, 叠的维数为
@@ -679,7 +659,6 @@ $ cal(O)_T ->^~ (p_T)_* cal(O)_(X_T) $
   在第 $d$ 部分, 一个族就是 $cal(O)_(PP_T^n) (d) times.o p_T^* cal(N)$, 其中 $cal(N)$ 是 $T$ 上的线丛. Picard概形只记录局部常值的次数 $d$, Picard叠还记录 $cal(N)$ 及其同构.
 ]
 
-#block(breakable: false)[
 #example(title:[曲线的Jacobian与伸缩对称])[
   设 $C slash k$ 是属 $g$ 的光滑射影连通曲线. 次数给出开闭分解
   $ underline(Pic)_(C slash k)=coprod_(d in ZZ) underline(Pic)_(C slash k)^d $
@@ -688,7 +667,6 @@ $ cal(O)_T ->^~ (p_T)_* cal(O)_(X_T) $
   每个次数部分都是光滑Artin叠, 且
   $ dim underline(Pic)_(C slash k)^d=g-1 $
   这里 $g$ 是线丛的变化维数, 减去的 $1$ 来自标量自同构. 光滑性也可以从曲线上 $H^2=0$ 看出; 相对曲线情形见 @Stacks26[Tag 0DM9, 引理 108.8.5].
-]
 ]
 
 实际使用时, 给出 $X_T$ 上的一族线丛, 就给出 $T->underline(Pic)_(X slash S)$. 若只关心相对Picard类, 复合 $q$ 即可; 若还要拉回万有线丛, 比较族的同构或研究变形, 就保留这个叠态射. 选定基点时, 则可把计算拆成Picard空间上的分类态射与 $T$ 上的一条线丛.
@@ -735,7 +713,7 @@ $ cal(O)_T ->^~ (p_T)_* cal(O)_(X_T) $
   局部相等的两个截面整体不同, 所以 $F_g$ 不是层.
 ]
 
-这与本章开头线丛的例子是同一个现象: *局部同构类相同, 还没有告诉我们用哪些同构粘合*. 这里每条几何纤维都同构于 $C$, 两个族的区别却保存在下降同构中.
+这与#chapter-ref(<sec-coarse-moduli>)开头线丛的例子是同一个现象: *局部同构类相同, 还没有告诉我们用哪些同构粘合*. 这里每条几何纤维都同构于 $C$, 两个族的区别却保存在下降同构中.
 
 === 保留同构就能下降
 
@@ -836,10 +814,8 @@ $ cal(H):=Hilb_(PP_ZZ^N slash ZZ)^(P_(g,m)) $
   最后, $Z_cal(L)->B$ 是 $P->B$ 的对角态射的基变换. 该对角是浸入, 所以 $Z_cal(L)$ 是局部闭子概形; 几何纤维整时 $P->B$ 分离, 因而它是闭子概形. 参见 @Stacks26[Tags 0DMF, 0DNJ].
 ]
 
-#block(breakable: false)[
 #remark(title:[不能只检查几何纤维])[
   条件 $[cal(L)_T]=0$ 比每条几何纤维上的线丛都平凡更强. 例如在代数闭域 $k$ 上取一条正属光滑射影曲线 $C$, 令 $T=Spec(k[epsilon] slash (epsilon^2))$. 由 @prop-picard-stack-deformation, $H^1 (C,cal(O)_C)$ 中的非零类给出 $cal(O)_C$ 的非平凡一阶变形. 它在唯一的几何纤维上平凡, 却不来自 $T$ 上的线丛, 因为 $Pic(T)=0$. 上面的等值子概形也记录了这种无穷小信息.
-]
 ]
 
 #proposition(title:[多重典范Hilbert子概形])[
@@ -879,14 +855,12 @@ $ cal(H):=Hilb_(PP_ZZ^N slash ZZ)^(P_(g,m)) $
   是 $T$ 上的射影丛同构, 称为一个*射影标架*. 两对数据同构, 是指曲线同构与射影标架相容.
 ]
 
-#block(breakable: false)[
 #proofsketch[
   命题中的嵌入给出 $cal(E)_m times.o cal(M) tilde.eq cal(O)_T^(plus.o r)$, 射影化便得到 $alpha$. 改变所选线丛同构只会乘以底上的单位, 射影化后不变.
 
   反过来, 给定 $alpha$, 将 @prop-relative-pluricanonical 的嵌入与它复合. 记 $p:PP_T (cal(E)_m)->T$. 线丛 $cal(N):=alpha^* cal(O)(1) times.o cal(O)(-1)$ 在每条射影空间纤维上平凡, 因而纤维上 $h^0=1$, 高阶上同调为零. 上同调与基变换说明 $cal(M):=p_* cal(N)$ 是线丛, 评价映射给出 $p^* cal(M) tilde.eq cal(N)$. 这就得到所需的底上扭曲; 推前后也得到完整线性系条件.
 
   两种构造互逆且与拉回相容. 而保持射影标架的曲线自同构在嵌入后必须为恒等, 所以这里确实得到一个集合值模函子.
-]
 ]
 
 === 取商叠以忘掉射影标架
@@ -959,13 +933,11 @@ $ a dot (C slash T,alpha)=(C slash T,a compose alpha) $
 
 === 对角态射与Deligne--Mumford性质
 
-#block(breakable: false)[
 #proposition(title:[曲线之间的同构概形])[
   对 $C slash T,D slash T in cal(M)_g (T)$, 函子
   $ I:=underline("Isom")_T (C,D) $
   由对 $T$ 仿射, 有限表示的概形表示, 并且是 $cal(M)_g$ 的对角态射沿 $(C,D)$ 的拉回.
 ] <prop-smooth-curves-isom>
-]
 
 #proof[
   关于对角的解释就是 @prop-stack-diagonal-isom. 对可表性, 可在 $T$ 上局部选取两个曲线族的射影标架, 得到 $h_C,h_D:T->H$. 完整典范线性系把曲线同构唯一延拓为射影坐标变换, 因而
@@ -1095,7 +1067,6 @@ $ op("Lie") underline(Aut)(P) tilde.eq H^0 (X,op("ad")(P)) $
   $ cal(O)_T^(plus.o r)->^~(p_T)_* cal(E)(m), quad p_T:X_T->T $
   这些是开条件, 后一个同构条件由上同调与基变换及行列式检验. 忘掉商映射, 就是忘掉 $(p_T)_* cal(E)(m)$ 的一组基. 因而 $Q_(m,Phi)$ 到相应开子叠的映射是 $GL_r$-挠子, 光滑且满射. Serre消失保证每个向量丛族在参数局部都能如此表示, 所以所有 $Q_(m,Phi)$ 的不交并给出 $op("Bun")_(GL_n)$ 的光滑图册.
 
-  #block(breakable: false)[
   *再把结构群约化到 $G$.* 选一个闭嵌入 $G arrow.r.hook GL_n$. 给定向量丛 $cal(E)$, 记其标架丛为 $F$. 给 $F$ 一个 $G$-约化, 等价于给商丛
   $ F slash G->X_T $
   一个截面: 拉回 $F->F slash G$ 就恢复这个 $G$-主丛. 齐次空间 $GL_n slash G$ 带有等变丰沛线丛, 所以 $F slash G->X_T$ 有限表示且相对拟射影, 见 @Wan11[引理 2.4.1]. 由 @lem-bun-section-scheme, 忘掉约化的态射
@@ -1103,7 +1074,6 @@ $ op("Lie") underline(Aut)(P) tilde.eq H^0 (X,op("ad")(P)) $
   概形可表且局部有限表示. 沿它拉回刚才的图册, 得到概形
   $ R_(m,Phi):=op("Bun")_G times_(op("Bun")_(GL_n)) Q_(m,Phi) $
   由基变换, 所有 $R_(m,Phi)->op("Bun")_G$ 联合构成光滑满射. 这就证明了Artin性, 图册对 $k$ 局部有限表示也给出相同的有限性结论.
-  ]
 
   最后补充光滑性. 对仿射参数的平方零增厚, 利用 $G$ 光滑, 可在平展覆盖上提升主丛的转移函数. 三重交上的误差给出 $op("ad")(P)$ 张量增厚理想的 $H^2$ 障碍. 曲线族在仿射底上的这个 $H^2$ 为零, 所以提升存在. 结合局部有限表示性, 得到光滑性; 详见 @Wan11[第 6 节].
 ]

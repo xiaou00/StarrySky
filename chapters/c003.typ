@@ -8,13 +8,13 @@
   doc,
 )
 
-= 模空间 / Moduli Spaces
+= 模空间 / Moduli Spaces <chap-moduli-spaces>
 
 == 什么是模空间?
 
-第一章中, 我们把三角形的全等类组织成一个空间, 从而可以讨论三角形的连续变化. 在代数几何中, 我们希望把代数对象也组织成一个*模空间* (moduli space), 使对象的变化能用几何来研究.
+#chapter-ref(<chap-animae>)中, 我们把三角形的全等类组织成一个空间, 从而可以讨论三角形的连续变化. 在代数几何中, 我们希望把代数对象也组织成一个*模空间* (moduli space), 使对象的变化能用几何来研究.
 
-沿用上一章的相对观点, 单个对象是点上的族, 更一般的族则允许对象随参数概形变化. 模空间需要同时描述对象与族. 以下固定基域 $k$, 并简记 $Sch_k:=Sch\/Spec k$.
+沿用#chapter-ref(<chap-topoi>)的相对观点, 单个对象是点上的族, 更一般的族则允许对象随参数概形变化. 模空间需要同时描述对象与族. 以下固定基域 $k$, 并简记 $Sch_k:=Sch\/Spec k$.
 
 === 点所对应的对象
 
@@ -44,7 +44,6 @@
   这里分类的是带商映射的一维空间. 若只记一维 $K$-向量空间本身, 它们只有一个同构类. 参见 @Stacks26[Tag 01ND].
 ]
 
-#block(breakable: false)[
 === 从点到族, 从空间到函子
 
 把 $Spec K$ 换成一般的参数概形 $T$, 就得到 $M$ 的 *$T$-值点*
@@ -52,7 +51,6 @@ $ M(T):=Hom_(Sch_k) (T,M) $
 沿 $f:T'->T$ 预复合, 给出 $M(T)->M(T')$. 因而概形 $M$ 自身可以看成一个反变函子
 $ h_M:(Sch_k)^opp->Set, quad T |-> M(T) $
 这就是*点函子*. 前文的 Yoneda 引理说明, 这个函子完整地记录了 $M$ 及其与其他概形之间的态射. 参见 @Stacks26[Tag 01JF].
-]
 
 #example(title: "随参数变化的多项式")[
   继续首一多项式的例子, 有自然双射
@@ -84,19 +82,16 @@ $ F(T):={"以 " T " 为参数的族的同构类"} $
   因而 $eta$ 完全由 $eta_M (id_M)$ 决定. 反过来, 拉回与复合相容, 所以 $g |-> g^* xi$ 确实定义自然变换; 再在 $id_M$ 处取值, 就得到 $xi$. 两个构造互逆.
 ]
 
-#block(breakable: false)[
 现在假设这个 $eta:h_M->F$ 是*自然同构*. 那么
 $ xi_"univ":=eta_M (id_M) $
 称为*万有元素*, 其代表族称为*万有族*. 因为每个 $eta_T$ 都是双射, 任意 $zeta in F(T)$ 都唯一写成
 $ zeta=g^* xi_"univ", quad g:T->M $
 所以万有族来自恒等态射, 所有族来自它的拉回. 反过来, 若一个族具有上述唯一拉回的性质, 它对应的自然变换就是同构. 这只是同一个 Yoneda 对应的两种读法. 参见 @Stacks26[Tag 01JF].
-]
 
 #remark[
   这里唯一的是分类态射 $g$. 由于 $F(T)$ 记录同构类, 上式说明两个族同构, 并不要求它们之间的同构唯一. 此外, 任意 $xi in F(M)$ 都给出自然变换, 而万有性要求这个自然变换是同构.
 ]
 
-#block(breakable: false)[
 #proposition(title: "万有族的唯一性")[
   若 $(M,xi)$ 与 $(N,nu)$ 都具有上述万有性, 则存在唯一同构 $u:M->N$ 使得 $u^* nu=xi$.
 ]
@@ -105,7 +100,6 @@ $ zeta=g^* xi_"univ", quad g:T->M $
   两边的万有性分别给出唯一态射 $u:M->N$ 与 $v:N->M$, 满足 $u^* nu=xi$ 和 $v^* xi=nu$. 于是
   $ (v compose u)^* xi=u^*(v^* xi)=u^* nu=xi $
   恒等态射也有这个性质, 故唯一性给出 $v compose u=id_M$. 同理 $u compose v=id_N$.
-]
 ]
 
 #example(title: "万有多项式就是恒等态射对应的族")[
@@ -126,11 +120,9 @@ $ zeta=g^* xi_"univ", quad g:T->M $
   概形态射 $f:U->V$ 称为*平展* (étale), 若它光滑且相对维数为 $0$. 等价地, 它局部有限表示, 平坦且非分歧. 参见 @Stacks26[Tag 02GH].
 ]
 
-#block(breakable: false)[
 它是代数几何中"局部同构"的对应物. 一个精确的含义是: 对 $V$ 上由平方零理想定义的闭浸入 $T_0->T$, 限制映射
 $ Hom_V (T,U)->Hom_V (T_0,U) $
 是双射. 也就是说, 已选定的局部解可以唯一延拓到无穷小增厚上, 不会增加新的无穷小自由度. 参见 @Stacks26[Tag 02HM].
-]
 
 #example(title: "重新看平方根")[
   设 $"char" k!=2$. 前文的方程 $x^2-t=0$ 给出 $bb(A)^1_k->bb(A)^1_k$, $t=x^2$. 去掉原点后, 得到平展二重覆盖
@@ -192,7 +184,6 @@ $ Hom_V (T,U)->Hom_V (T_0,U) $
 
 因此, "平展局部是概形"是通过测试概形与基变换来表达的. 它不要求 $U$ 是 $X$ 的开子空间; 图册中的不同点可以描述同一个局部对象.
 
-#block(breakable: false)[
 === 商与基本结论
 
 #theorem(title: "代数空间是平展等价关系的商")[
@@ -203,8 +194,7 @@ $ Hom_V (T,U)->Hom_V (T_0,U) $
   反过来, 若概形中的等价关系 $R->U times_k U$ 的两个投影都是平展态射, 则层商 $U slash R$ 是代数空间, $U->U slash R$ 是平展图册. 参见 @Stacks26[Tag 02WW].
 ]
 
-这里的等价关系要求 $R->U times_k U$ 是单态射, 且对每个测试概形都给出集合的等价关系. 用第一章的语言说, 它是任意两对象之间至多有一个箭头的内部群胚. 层化则保证局部代表可以按相容关系粘合.
-]
+这里的等价关系要求 $R->U times_k U$ 是单态射, 且对每个测试概形都给出集合的等价关系. 用#chapter-ref(<chap-animae>)的语言说, 它是任意两对象之间至多有一个箭头的内部群胚. 层化则保证局部代表可以按相容关系粘合.
 
 #proposition(title: "几条基本性质")[
   - 每个概形都是代数空间, 可取恒等态射为图册. Yoneda 嵌入将 $Sch_k$ 视为代数空间范畴的全子范畴. 参见 @Stacks26[Tag 025X].
@@ -579,7 +569,7 @@ $ Y tilde.eq T times_M U $
   这里 $underline(Hom)$ 表示层 Hom. 在点的层面, 第一式说的是: 核子空间 $K$ 的一阶变形由 $Hom(K,Q)$ 描述. 参见 @Bez15[命题 3].
 ] <prop-grassmann-tangent>
 
-== Hilbert概形
+== Hilbert概形 <sec-hilbert-scheme>
 
 Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化射影空间中闭子概形的族. 下面我们先给出它的定义, 再讨论它的存在性与几何性质.
 
@@ -662,7 +652,6 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
   则称 $cal(F)$ 是 *$m$-正则的*. 参见 @Stacks26[Tag 08A3].
 ] <def-cm-regularity>
 
-#block(breakable: false)[
 #proposition(title:[正则性带来的消失与生成])[
   若 $cal(F)$ 是 $m$-正则的, 则对每个 $q>=m$, 它也是 $q$-正则的, $cal(F)(q)$ 由整体截面生成, 并且
   $ H^i (PP_k^N,cal(F)(q))=0 quad (i>0) $
@@ -670,7 +659,6 @@ Hilbert概形可以视作是Grassmann理论很自然的下一步, 它参数化�
   $ H^0 (PP_k^N,cal(F)(q)) times.o_k H^0 (PP_k^N,cal(O)(1)) -> H^0 (PP_k^N,cal(F)(q+1)) $
   也满射. 参见 @Stacks26[Tags 08A6, 08A7, 08A8].
 ] <prop-cm-consequences>
-]
 
 #proofsketch[
   扩域后可选一个避开伴随点的超平面, 用限制到超平面的正合列, 对 $N$ 归纳. 上同调长正合列把消失性和乘法的满射性逐次传到更高次数; 再结合 Serre 的整体生成定理, 得到 $cal(F)(m)$ 的整体生成性.
@@ -847,7 +835,6 @@ $ f_G^* cal(K)_m times.o cal(O)(-m) -> f_G^* V_(m,G) times.o cal(O)(-m) -> cal(O
 
 Hilbert模函子本身只依赖 $X slash S$. 选定 $cal(O)_X (1)$ 后才有固定多项式 $P$ 的分类, 选定次数 $m$ 后才有上述具体的Grassmann嵌入.
 
-#block(breakable: false)[
 #proposition(title:[完整Hilbert概形及开, 闭环境])[
   对上述射影 $X slash S$, 完整Hilbert模函子由
   $ Hilb_(X slash S)=coprod_P Hilb_(X slash S)^P $
@@ -857,7 +844,6 @@ Hilbert模函子本身只依赖 $X slash S$. 选定 $cal(O)_X (1)$ 后才有固�
   $ Hilb_(U slash S)->Hilb_(X slash S) $
   是开嵌入; 这里 $U$ 中的族仍须对参数概形紧合.
 ] <prop-hilbert-open-closed>
-]
 
 #proofsketch[
   由 @prop-hilbert-flat-polynomial, 任意参数概形 $T$ 按纤维的多项式分成开闭部分, 每一部分上的族对应一个 $Hilb^P$ 的态射, 合起来即得到到上述不交并的态射. 闭嵌入的结论由 @prop-hilbert-closed-ambient 得到.
@@ -886,7 +872,6 @@ $ [Z] |-> [V_m ->> H^0 (Z,cal(O)_Z (m))] $
 - *在局部坐标里计算.* 取Grassmann标准图, 把商写成前文的标准矩阵. 它的核给出一组随矩阵系数变化的 $m$ 次方程, Hilbert概形的闭条件再选出合法的族. 若只想研究 $[Z]$ 附近, 往往只需这一张图.
 - *研究一阶变化.* 把参数取成 $T=Spec(k[epsilon] slash (epsilon^2))$, 并要求唯一的点映到 $[Z]$. 得到的 $T->H$ 就是 $H$ 在 $[Z]$ 处的切向量, 也就是 $Z$ 在固定 $X$ 中的一阶嵌入变形.
 
-#block(breakable: false)[
 #example(title:[在仿射直线上, 又回到了多项式的系数])[
   固定 $d>=1$. 对 $X=AA_k^1$, 长度为 $d$ 的Hilbert概形满足
   $ Hilb_(AA_k^1 slash k)^d tilde.eq AA_k^d $
@@ -896,11 +881,10 @@ $ [Z] |-> [V_m ->> H^0 (Z,cal(O)_Z (m))] $
 
   当 $d=2$ 时, 两点碰合的族 $x(x-t)=x^2-t x$ 对应系数空间中的直线 $(a_0,a_1)=(0,-t)$. 所谓退化, 在这里就是沿这条直线走到原点; 原点上方的万有族纤维是 $Spec(k[x] slash (x^2))$.
 ]
-]
 
 == Quot概形
 
-Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成一个固定的凝聚层 $cal(E)$, 就得到 *Quot模问题*: 让 $cal(E)$ 的商随参数平坦地变化. 它的构造基本沿用上一节, 这里只补充变化的部分.
+Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成一个固定的凝聚层 $cal(E)$, 就得到 *Quot模问题*: 让 $cal(E)$ 的商随参数平坦地变化. 它的构造基本沿用#link(<sec-hilbert-scheme>)[Hilbert概形一节], 这里只补充变化的部分.
 
 === 模函子与熟悉的例子
 
@@ -920,7 +904,6 @@ Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成
   平坦性是对 $cal(F)$ 相对于参数 $T$ 的要求, $cal(F)$ 在 $X_T$ 上未必局部自由. 例如 $cal(O)_Z$ 就可以有较小的支撑.
 ]
 
-#block(breakable: false)[
 #example(title:[Hilbert与Grassmann都是Quot])[
   当 $cal(E)=cal(O)_X$ 时, 商的核是理想层, 商便是相应闭子概形的结构层. 因而
   $ frak(Quot)_(cal(O)_X slash X slash S)^P tilde.eq frak(Hilb)_(X slash S)^P $
@@ -929,7 +912,6 @@ Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成
   当 $X=S$, $cal(E)$ 有限局部自由, $P equiv r$ 时, 有限表示的平坦商正是秩 $r$ 的局部自由商, 所以
   $ frak(Quot)_(cal(E) slash S slash S)^r tilde.eq frak(Gr)_r (cal(E)) $
   这就回到了 @thm-grassmann-representability.
-]
 ]
 
 === 沿用Hilbert的构造
@@ -962,7 +944,6 @@ Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成
   各个仿射开集上的构造由万有性粘合. 高次万有商的行列式线丛也相容地粘合, 给出相对极丰沛线丛, 从而得到射影性. 一般情形的细节见 @Nit05[第 5 节].
 ]
 
-#block(breakable: false)[
 === 万有商与基本性质
 
 #proposition(title:[万有商及基变换])[
@@ -974,7 +955,6 @@ Hilbert概形记录结构层的商 $cal(O)_(X_T)->>cal(O)_Z$. 把结构层换成
   $ Quot_(cal(E) slash X slash S)^P times_S S' tilde.eq Quot_(cal(E)_(S') slash X_(S') slash S')^P $
   万有正合列也随之拉回. 对足够大的 $m$, $p_* cal(F)_"univ" (m)$ 局部自由, 秩为 $P(m)$, 与基变换相容; 其行列式给出上述构造中的极化.
 ] <prop-quot-universal-base-change>
-]
 
 #proof[
   万有商对应 $id_Q$, 基变换公式由 Yoneda 引理得到. 商层对 $Q$ 平坦, 保证拉回正合列仍正合; 高次直接像的性质仍来自上同调与基变换.

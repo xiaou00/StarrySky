@@ -7,7 +7,7 @@
   doc,
 )
 
-= $K_0$ 群 / The Group $K_0$
+= $K_0$ 群 / The Group $K_0$ <chap-k0>
 
 建议在阅读本章之前先阅读@chap-retract 的内容.
 
@@ -418,7 +418,7 @@ $ B O(n):=varinjlim(N) op("Gr")_n (RR^N), quad B U(n):=varinjlim(N) op("Gr")_n (
 
 因此, 同伦的映射 $f,g:Y->X$ 拉回同一个丛, 结果同构. 特别地, 可缩的仿紧 Hausdorff 空间上所有有限秩向量丛都平凡. 分类映射把丛的粘合方式记成了一个同伦类.
 
-=== 用特征类记录粘合信息
+=== 用特征类记录粘合信息 <sec-topological-characteristic-classes>
 
 本小节取 $X$ 为 CW 复形, $H^i (X;A)$ 表示奇异上同调. 特征类用上同调类记录丛的信息, 并且与拉回相容.
 
@@ -842,7 +842,7 @@ $ K_(C_2)^0 (X) tilde.eq K U(X)[s] slash (s^2-1) $
 
 == Abel 范畴的 $K_0$ <sec-abelian-k0>
 
-前一节从直和出发, 要求 $[x plus.o z]=[x]+[z]$. 在 Abel 范畴里, 还可以把一个对象拆成子对象和商对象. 这里把这种拆分也写成关系:
+#link(<sec-monoidal-k0>)[前一节]从直和出发, 要求 $[x plus.o z]=[x]+[z]$. 在 Abel 范畴里, 还可以把一个对象拆成子对象和商对象. 这里把这种拆分也写成关系:
 $ 0->x->y->z->0 quad ==> quad [y]=[x]+[z] $
 这样得到的 $K_0$ 是短正合列的通用加性不变量. 下面先比较两种定义, 再用正合列和滤过做计算, 最后讨论局部化与导出范畴. 主要参考 @Wei13[II, 第 6 节] 与 @Stacks26[Tags 02MT, 0FDE].
 
@@ -910,7 +910,7 @@ $ K_0^"split" (C)->>K_0 (C) $
   这个等式在分裂 Grothendieck 群中不成立. 事实上, 令 $M[p]=ker(p\:M->M)$, 则 $dim_(bb(F)_p) M[p]$ 对直和可加. 它在左边取值 $1$, 在右边取值 $2$. 因而*加入短正合列关系, 确实会合并原来不同的类*.
 ]
 
-若所有短正合列都分裂, 则上面的满射是同构. 特别地, 有限维向量空间和特征零下有限群的表示, 都与前一节的计算一致.
+若所有短正合列都分裂, 则上面的满射是同构. 特别地, 有限维向量空间和特征零下有限群的表示, 都与#link(<sec-monoidal-k0>)[前一节]的计算一致.
 
 *函子性与基本构造.*
 
@@ -1666,7 +1666,7 @@ $ F_gamma^n K=K inter F_gamma^n K' $
 
 因此, 若记 $S K_(0) (R):=ker(det\:tilde(K)_(0) (R)->Pic(R))$, 就有
 $ F_gamma^1 K_(0) (R)=tilde(K)_(0) (R), quad F_gamma^2 K_(0) (R)=S K_(0) (R) $
-对有限 CW 复形, 上一节的线丛分类还给出
+对有限 CW 复形, #link(<sec-topological-characteristic-classes>)[线丛分类]还给出
 $ F_gamma^1 K O(X)\/F_gamma^2 K O(X) tilde.eq H^1 (X;ZZ\/2ZZ) $
 $ F_gamma^1 K U(X)\/F_gamma^2 K U(X) tilde.eq H^2 (X;ZZ) $
 所以前两层分别记录秩与行列式; 在拓扑中, 后者就是 $w_1$ 或 $c_1$.
@@ -1770,7 +1770,7 @@ $ F_gamma^1 K U(X)\/F_gamma^2 K U(X) tilde.eq H^2 (X;ZZ) $
   当 $H!=ZZ$ 时, 还要求与系数相容: $c_(t) (h x)=c_(t) (x)^h$. 右边用二项式展开, 系数 $binom(h,j)$ 通过 $H->A^0$ 解释; $H=ZZ$ 时这已包含在直和公式中.
 ]
 
-条件中是 $n>r$, 所以最高次 $c_(r) (p)$ 可以非零. 上一节的 Chern 类与 Stiefel--Whitney 类都满足这些条件.
+条件中是 $n>r$, 所以最高次 $c_(r) (p)$ 可以非零. #link(<sec-topological-characteristic-classes>)[前面定义的 Chern 类与 Stiefel--Whitney 类]都满足这些条件.
 
 #proposition(title: [$gamma$-滤过给出的 Chern 类])[
   在 $A=op("gr")_gamma K$ 中定义

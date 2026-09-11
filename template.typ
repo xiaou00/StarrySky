@@ -95,13 +95,26 @@
   if chapter in appendices {
     numbering("A", preceding)
   } else {
-    numbering(if padded { "01" } else { "1" }, chapter - preceding)
+    let number = chapter - preceding
+    if padded and number < 10 { "0" + str(number) } else { str(number) }
   }
 }
 
 #let _heading-numbering(..numbers) = context {
   let values = numbers.pos()
   ( (_chapter-number(values.first()),) + values.slice(1).map(str) ).join(".")
+}
+
+// Cite the containing chapter while retaining the precise link destination.
+#let chapter-ref(target) = context {
+  let el = query(target).first()
+  let number = _chapter-number(counter(heading).at(el.location()).first())
+  let body = if _appendix-depth.at(el.location()) > 0 {
+    "附录" + number
+  } else {
+    "第" + number + "章"
+  }
+  link(target, body)
 }
 
 // Place this wrapper at the end of the book. Included chapters can keep their
@@ -143,7 +156,8 @@
 // Examples:
 //   #simplex2($x_0$, $x_1$, $x_2$)
 //   #simplex2($x_0$, $x_1$, $x_2$, ab: $f$, bc: $g$, ac: $g compose f$)
-#let simplex2(a, b, c, ab: none, bc: none, ac: none) = book-diagram(
+#let simplex2(a, b, c, ab: none, bc: none, ac: none, edge-stroke: .65pt + muted) = book-diagram(
+  edge-stroke: edge-stroke,
   spacing: 20pt,
   cell-size: 0pt,
   node-inset: 5pt,
@@ -251,10 +265,11 @@
 #let _book-ref(it) = {
   let el = it.element
   if el != none and el.func() == heading and it.form == "normal" and it.supplement == auto {
-    let prefix = if el.level != 1 { [小节] }
-      else if _appendix-depth.at(el.location()) > 0 { [附录] }
-      else { [章节] }
-    ref(it.target, supplement: prefix)
+    if el.level == 1 {
+      chapter-ref(it.target)
+    } else {
+      ref(it.target, supplement: [小节])
+    }
   } else if el != none and repr(el.func()) == "block" and repr(el.body.func()) == "align" {
     let inner = el.body.body
     if repr(inner.func()) == "sequence" and inner.children.len() > 0 {
@@ -351,7 +366,7 @@
   show heading.where(level: 1): it => {
     if it.at("label", default: none) == <references> {
       pagebreak(weak: true)
-      block(width: 100%, breakable: false, sticky: true, above: 14pt, below: 22pt, {
+      block(width: 100%, sticky: true, above: 14pt, below: 22pt, {
         _small-label("REFERENCES", color: blue)
         v(12pt)
         text(size: 24pt, weight: "semibold", fill: midnight, it.body)
@@ -379,7 +394,7 @@
     } else {
       _reset-env-counters()
       pagebreak(weak: true)
-      block(width: 100%, breakable: false, sticky: true, above: 14pt, below: 22pt, {
+      block(width: 100%, sticky: true, above: 14pt, below: 22pt, {
         _small-label({
           let chapter = counter(heading).at(it.location()).first()
           let prefix = if _appendix-depth.at(it.location()) > 0 { "APPENDIX " } else { "CHAPTER " }
@@ -393,7 +408,7 @@
     }
   }
   show heading.where(level: 2): it => block(
-    width: 100%, breakable: false, sticky: true, above: 20pt, below: 10pt,
+    width: 100%, sticky: true, above: 20pt, below: 10pt,
     grid(
       columns: (auto, 1fr), column-gutter: 10pt, align: horizon,
       text(font: latin-serif, size: 12pt, fill: blue,
@@ -402,7 +417,7 @@
     ),
   )
   show heading.where(level: 3): it => block(
-    breakable: false, sticky: true, above: 14pt, below: 7pt,
+    sticky: true, above: 14pt, below: 7pt,
     text(size: 12pt, weight: "semibold", fill: ink, [
       #text(fill: blue, counter(heading).display(_heading-numbering))
       #h(5pt)#it.body

@@ -9,7 +9,7 @@
 
 本章先固定定义. 从普通环上的有限投射复形出发, 再看概形上的局部版本. 环谱上, 核心定义是 *模范畴中的紧对象*; 对一般预层, 则在每个仿射测试点上检验这个条件. 随后定义向量丛与完美对象的 $K_0$.
 
-以下的 $QCoh$ 沿用#link(<chap-quasi-coherent>)[第六章]的拟凝聚模无穷范畴, $f^*$ 与 $times.o$ 均按导出意义理解. 大小问题也沿用该章的宇宙约定. 定义主要参考 @Lur17[第 7.2.4 节], @Lur11DAG8[第 2.7 节] 与 @Stacks26[第 36 章].
+以下的 $QCoh$ 沿用#chapter-ref(<chap-quasi-coherent>)的拟凝聚模无穷范畴, $f^*$ 与 $times.o$ 均按导出意义理解. 大小问题也沿用#chapter-ref(<chap-quasi-coherent>)的宇宙约定. 定义主要参考 @Lur17[第 7.2.4 节], @Lur11DAG8[第 2.7 节] 与 @Stacks26[第 36 章].
 
 == 完美复形的定义
 
@@ -142,7 +142,7 @@ $ B times.o_A P_(A,x) tilde.eq P_(B,y) $
 
   *幂等完备性.* $QCoh(X)$ 有小余极限, 所以每个相容幂等图表都能分裂: 可取反复作用该幂等态射的序列的余极限. 若图表中的对象是 $P in cat("Perf")(X)$, 分裂所得对象 $Q$ 是 $P$ 的收缩. 拉回后 $x^* Q$ 仍是紧模 $x^* P$ 的收缩, 因而紧. 所以 $Q$ 仍在 $cat("Perf")(X)$ 中.
 
-  *本质小性.* 由可达性, 可将 $X$ 写成仿射可表预层组成的小图表 $i mapsto Spec A_i$ 的余极限, 记指标范畴为 $I$. 如#link(<chap-quasi-coherent>)[第六章]所述, $QCoh$ 将这个余极限变成极限. 由于换基保持完美性, 该等价限制为
+  *本质小性.* 由可达性, 可将 $X$ 写成仿射可表预层组成的小图表 $i mapsto Spec A_i$ 的余极限, 记指标范畴为 $I$. 如#chapter-ref(<chap-quasi-coherent>)所述, $QCoh$ 将这个余极限变成极限. 由于换基保持完美性, 该等价限制为
   $ cat("Perf")(X) tilde.eq varprojlim(i in I^opp) cat("Perf")(A_i) $
   具体地, 任意测试点 $Spec B->X$ 都在同伦意义下经过其中某个 $Spec A_i$, 因而其拉回是相应完美 $A_i$-模的换基. 所以在这些呈示点上检验完美性就够了. 每个 $cat("Perf")(A_i)$ 本质小, 而本质小范畴的小极限仍本质小, 这就证明了最后一点.
 ]
@@ -189,7 +189,7 @@ $ B times.o_A P_(A,x) tilde.eq P_(B,y) $
 #proof[
   先说明一个事实: *qcqs 概形上的整体截面保持滤过余极限*. 仿射时, 整体截面只是限制标量. 拟紧分离时, 取有限仿射开覆盖, 各个有限交仍仿射, 用有限的交错 Čech 复形计算导出整体截面即可.
 
-  一般 qcqs 情形, 取有限仿射开覆盖, 逐个加入其中的开集. 新加入的仿射开集与先前开集之并的交, 是仿射概形的拟紧开子概形, 因而拟紧分离. 用#link(<chap-quasi-coherent>)[第六章]的 Mayer--Vietoris 纤维序列归纳, 就得到所需结论: 这些计算只用有限极限, 而滤过余极限与有限极限交换. 也可参见 @Stacks26[Tag 08DZ].
+  一般 qcqs 情形, 取有限仿射开覆盖, 逐个加入其中的开集. 新加入的仿射开集与先前开集之并的交, 是仿射概形的拟紧开子概形, 因而拟紧分离. 用#chapter-ref(<chap-quasi-coherent>)的 Mayer--Vietoris 纤维序列归纳, 就得到所需结论: 这些计算只用有限极限, 而滤过余极限与有限极限交换. 也可参见 @Stacks26[Tag 08DZ].
 
   *完美对象是紧的.* 设 $P$ 完美. 将局部有界有限自由复形取对偶, 得到的对偶与限制相容, 因而粘合成 $P^or$. 局部的张量--Hom 等价也随之粘合, 给出
   $ Map_(QCoh(X)) (P,M) tilde.eq Omega^oo U_Lambda Gamma(X,P^or times.o M) $
@@ -295,7 +295,7 @@ $ op("rk")_z (g^* E)=op("rk")_(g compose z) (E) $
 
 === 生成元与纤维序列关系
 
-这里沿用上一章三角范畴的 $K_0$, 用稳定无穷范畴中的纤维序列来写关系. 对象的等价类与自由 Abel 群都在足够大的固定宇宙中取.
+这里沿用#chapter-ref(<chap-k0>)中三角范畴的 $K_0$, 用稳定无穷范畴中的纤维序列来写关系. 对象的等价类与自由 Abel 群都在足够大的固定宇宙中取.
 
 #definition(title: [完美对象的 $K_0$])[
   对上述预层 $X$, 定义
@@ -371,7 +371,7 @@ $ [P] dot [Q]:=[P times.o_(cal(O)_X) Q], quad 1:=[cal(O)_X] $
 #proposition(title: [与普通环的 $K_0$ 相容])[
   设 $R$ 是普通交换环, $P$ 由有界有限生成投射模复形 $P^bullet$ 表示. 则
   $ [P]=sum_i (-1)^i [P^i [0]] in K_0 (cat("Perf")(R)) $
-  暂用 $K_0^"proj" (R)$ 表示第七章由有限生成投射模定义的群. 将投射模放在零次, 给出自然环同构
+  暂用 $K_0^"proj" (R)$ 表示#chapter-ref(<chap-k0>)中由有限生成投射模定义的群. 将投射模放在零次, 给出自然环同构
   $ K_0^"proj" (R) tilde.eq K_0 (cat("Perf")(R)) $
   逆映射就是取各项的交错和. 因而两者可以继续共用 $K_0 (R)$ 这个记号.
 ] <prop-perfect-k0-projective-comparison>
@@ -420,7 +420,7 @@ $ [P]=sum_i (-1)^i [E^i] in K_0 (X) $
 
 Tor 振幅衡量的是: *张量函子把零次对象送到哪些次数*. 它需要一个 $t$-结构来规定次数. 回顾 @def-t-structure 与 @def-heart, 本节沿用复形的*上同调编号*, 记
 $ cal(C)^([a,b]):=cal(C)_(>=-b) ∩ cal(C)_(<=-a), quad cal(C)^suit.heart=cal(C)^([0,0]) $
-所以这里的上同调区间 $[a,b]$, 对应第五章的同伦次数区间 $[-b,-a]$.
+所以这里的上同调区间 $[a,b]$, 对应#chapter-ref(<chap-spectra>)的同伦次数区间 $[-b,-a]$.
 
 #definition(title: [Tor 振幅])[
   设 $cal(C),cal(D)$ 是带 $t$-结构的稳定无穷范畴, $T:cal(C)->cal(D)$ 是正合函子. 对整数 $a<=b$, 用条件
@@ -611,7 +611,7 @@ $ E in cat("Perf")(X slash Y) quad ==> quad f_* E in cat("Perf")(Y) $
 
 == 前推与投影公式 <sec-perfect-pushforward>
 
-本节先在一般预层上推导投影公式, 再讨论前推何时保持完美性. 沿用#link(<chap-quasi-coherent>)[第六章]的约定, $f^*,f_*$ 和张量积都已经是导出的; 用普通复形的记号写, 它们就是 $L f^*,R f_*$ 和导出张量积.
+本节先在一般预层上推导投影公式, 再讨论前推何时保持完美性. 沿用#chapter-ref(<chap-quasi-coherent>)的约定, $f^*,f_*$ 和张量积都已经是导出的; 用普通复形的记号写, 它们就是 $L f^*,R f_*$ 和导出张量积.
 
 === 前推与完美性
 
@@ -823,7 +823,7 @@ $ beta_(y,F):y^* f_* F -> (f_A)_* u_A^* F $
 
 $f^!$ 是前推的右伴随, 与拉回 $f^*$ 的方向相同, 但定义不同; 它是对偶理论中的另一种逆像. 上述命题说明, 在紧生成的语境中, 前推的有限性可以转化为这个右伴随与滤过余极限的相容性. 对一般预层, 这里的紧生成性, 完美对象等于紧对象, 以及 $f_*$ 保持余极限都要另外验证.
 
-叠上的自同构群也会影响有限性. 例如令 $k$ 的特征为 $p>0$, $G=C_p$, 并取 $q:B G->Spec k$. 单位对象 $cal(O)_(B G)$ 是线丛, 但由#link(<chap-quasi-coherent>)[第六章]的群上同调计算,
+叠上的自同构群也会影响有限性. 例如令 $k$ 的特征为 $p>0$, $G=C_p$, 并取 $q:B G->Spec k$. 单位对象 $cal(O)_(B G)$ 是线丛, 但由#chapter-ref(<chap-quasi-coherent>)的群上同调计算,
 $ H^i (q_* cal(O)_(B G)) tilde.eq Ext_(k[G])^i (k,k) tilde.eq k quad (i>=0) $
 最后一个等价可以直接验证: 写 $k[G] tilde.eq k[t] slash t^p$, 平凡模 $k$ 有微分交替为乘 $t$ 与乘 $t^(p-1)$ 的周期自由解消; 施加 $Hom_(k[G]) (-,k)$ 后所有微分为零. 所以前推有无限多个非零上同调, 并不完美. 推广到叠时, 必须检验这类上同调有限性.
 

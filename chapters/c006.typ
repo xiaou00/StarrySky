@@ -226,7 +226,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
   $ (M⊗N)_(A,x):=M_(A,x)⊗_A N_(A,x) $
   固定 $N$, 函子 $-⊗N:C->C$ 保持小余极限, 因而有右伴随, 记为 $underline(Hom)_(cal(F)) (N,-)$. 其值称为*内部 Hom* (internal Hom), 由自然等价刻画:
   $ Map_C (M⊗N,P) tilde.eq Map_C (M,underline(Hom)_(cal(F)) (N,P)) $
-  这里的 $Map_C$ 是生象, 而 $underline(Hom)_(cal(F)) (N,P)$ 是 $cal(F)$ 上的拟凝聚模. 取 $cal(F)=Spec A$, 它就是内部 $A$-模 $underline(Hom)_A (N,P)$, 底层谱是上一章的 $A$-线性映射谱 $underline(Map)_A (N,P)$. 参见 @Lur11DAG8[第 2.7 节], @Lur09[推论 5.5.2.9].
+  这里的 $Map_C$ 是生象, 而 $underline(Hom)_(cal(F)) (N,P)$ 是 $cal(F)$ 上的拟凝聚模. 取 $cal(F)=Spec A$, 它就是内部 $A$-模 $underline(Hom)_A (N,P)$, 底层谱是#chapter-ref(<chap-spectra>)的 $A$-线性映射谱 $underline(Map)_A (N,P)$. 参见 @Lur11DAG8[第 2.7 节], @Lur09[推论 5.5.2.9].
 ] <def-qcoh-internal-hom>
 
 张量积可以逐测试点计算; 内部 Hom 则使用上述伴随性质定义. 一般不能直接把各点的内部 Hom 拼起来, 因为内部 Hom 未必与扩张标量交换.
@@ -234,7 +234,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 #example(title: [仿射情形下的换系数与限制系数])[
   对环谱态射 $A->B$ 及对应的 $f:Spec B->Spec A$, 有
   $ f^* M tilde.eq B⊗_A M, quad f_* N tilde.eq op("Res")_A^B N $
-  左边把 $A$-模扩张为 $B$-模; 右边保持 $N$ 的底层谱, 只沿 $A->B$ 将它看作 $A$-模. 这正是上一章的扩张标量与限制标量伴随.
+  左边把 $A$-模扩张为 $B$-模; 右边保持 $N$ 的底层谱, 只沿 $A->B$ 将它看作 $A$-模. 这正是#chapter-ref(<chap-spectra>)的扩张标量与限制标量伴随.
 
   这也解释了为什么"限制相容族"会给出换系数: 在 $B$ 这个测试点, 原来的相容族就已经取值为 $B⊗_A M$.
 
@@ -267,7 +267,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
   所以 $f^* V,f_* W$ 一般会离开心; 它们保留整个导出对象, 取 $cal(H)^0$ 才回到普通层的运算. 仿射上, 拉回的零次恢复普通张量积, 负次上同调层记录 Tor; 前推的正次上同调层则记录高阶前推. 参见 @Stacks26[Tags 06YI, 079V, 08DY].
 ]
 
-=== 结构态射的拉回与整体截面
+=== 结构态射的拉回与整体截面 <sec-qcoh-global-sections>
 
 #remark(title: [$p^*$ 怎样把系数放到几何对象上])[
   设 $p:cal(F)->Spec Lambda$ 是结构态射. 一个 $Lambda$-模 $L$ 在 $Spec Lambda$ 的测试点 $Lambda->A$ 上取值为 $A⊗_Lambda L$. 因此, 沿 $p$ 限制这族数据, 就得到
@@ -290,7 +290,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 ] <def-qcoh-global-sections>
 
 #remark(title: "从单位对象到相容截面")[
-  取系数模 $L=Lambda$, 并使用上一章的映射谱, 伴随关系给出
+  取系数模 $L=Lambda$, 并使用#chapter-ref(<chap-spectra>)的映射谱, 伴随关系给出
   $ U_Lambda Gamma(cal(F),M) tilde.eq underline(Map)_(QCoh(cal(F))) (cal(O)_(cal(F)),M) $
   这里 $U_Lambda:Mod_Lambda->Sp$ 忘掉系数. 所以整体截面的底层谱, 就是*从单位对象到 $M$ 的映射谱*. 特别地, 一个 $s in pi_0 Gamma(cal(F),M)$ 对应一个态射 $cal(O)_(cal(F))->M$ 的同伦类.
 
@@ -304,7 +304,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
   $ Gamma(Spec A,M) tilde.eq op("Res")_Lambda^A M $
   对普通概形 $X$ 上的普通拟凝聚层 $V$, 通常的截面群是
   $ H^0 (X,V) tilde.eq pi_0 Gamma(X,V) $
-  $Gamma(X,V)$ 还保留全部高阶上同调; 下一节按次数读出这些信息.
+  $Gamma(X,V)$ 还保留全部高阶上同调; #link(<sec-qcoh-cohomology>)[下一节]按次数读出这些信息.
 ]
 
 #proposition(title: "单位与求值映射")[
@@ -330,7 +330,7 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
 
   特别地, *整体函数环谱*
   $ B:=Gamma(cal(F),cal(O)_(cal(F))) in CAlg_Lambda $
-  是交换 $Lambda$-代数, 而每个 $Gamma(cal(F),M)$ 都自然是 $B$-模. 直观上, 整体函数可以乘整体截面; 下一节的杯积就是按次数读出这份乘法.
+  是交换 $Lambda$-代数, 而每个 $Gamma(cal(F),M)$ 都自然是 $B$-模. 直观上, 整体函数可以乘整体截面; #link(<sec-qcoh-cohomology>)[下一节]的杯积就是按次数读出这份乘法.
 ] <prop-qcoh-global-monoidal>
 
 #proofsketch[
@@ -345,9 +345,9 @@ $ J_(cal(F))->J_(cal(G)), quad (A,x) mapsto (A,f_A (x)) $
   因而此时求值映射是 $0->cal(O)(-1)$, 并非等价. 要恢复整个拟凝聚模, 仍需它在各块上的数据及粘合方式.
 ]
 
-== 拟凝聚模的上同调
+== 拟凝聚模的上同调 <sec-qcoh-cohomology>
 
-上一节的整体截面已经是一个模谱. 上同调就是把它按次数读出来. 对普通层, 第零次给出通常的截面, 更高次数还记录粘合, 提升与扩张中的信息.
+#link(<sec-qcoh-global-sections>)[上一节]的整体截面已经是一个模谱. 上同调就是把它按次数读出来. 对普通层, 第零次给出通常的截面, 更高次数还记录粘合, 提升与扩张中的信息.
 
 === 定义与基本性质
 
@@ -472,4 +472,4 @@ $ H^i (cal(G),N) -> H^i (cal(F),f^* N) $
 
 实际计算时, 先选方便的仿射覆盖或图册, 写出限制映射, 再计算相应复形的核与像. 遇到短正合列就用长正合列, 遇到态射就用前推和 Leray 谱序列; 紧合性与 Serre 消失则控制答案的有限性和可能出现的次数.
 
-局部自由的拟凝聚模, 即向量丛与线丛, 将在#link(<sec-perfect-vector-bundles>)[完美复形一章]中统一讨论.
+局部自由的拟凝聚模, 即向量丛与线丛, 将在#chapter-ref(<sec-perfect-vector-bundles>)中统一讨论.
