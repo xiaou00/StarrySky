@@ -43,6 +43,10 @@
 
 #include "chapters/c012.typ"
 
+#include "chapters/c013.typ"
+
+#include "chapters/c014.typ"
+
 #part[附录]
 
 #appendix[

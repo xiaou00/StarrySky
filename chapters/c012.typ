@@ -3,7 +3,7 @@
 
 #show: doc => conf(easy: true, doc,)
 
-= Hopf 代数 <chap-hopf-algebras>
+= Hopf 代数 / Hopf Algebras <chap-hopf-algebras>
 
 == 代数与余代数
 
@@ -413,3 +413,146 @@ $ H mapsto R' times.o_R H $
 ]
 
 例如把加法余乘法的 $k[t]$ 按 $deg(t)=1$ 分次, 就满足这个定理. 乘法余乘法 $Delta(t)=t times.o t$ 的总次数为 $2$, 不满足定理中的分次条件.
+
+
+== Hopf 代数诱导的结构
+
+=== 模范畴的对称幺半结构
+
+设 $(cal(C),times.o,bold(1))$ 是对称幺半 $oo$-范畴, $H$ 是其中的 Hopf 代数. 本节将左 $H$-模组成的无穷范畴记为 $Mod_H$. 一个模 $M$ 有作用 $rho_M:H times.o M->M$, 并带有结合与单位的全部相容性.
+
+一般的 Hopf 代数给出幺半结构. 为了用底层范畴的对称约束得到*对称*幺半结构, 以下要求 $H$ *余交换*. 在无穷范畴中, 这是说 $H$ 带有与乘法相容的 $EE_oo$-余代数结构, 即来自 $Alg(cat("CoCAlg")(cal(C)))$. 因而余交换性包含所有高阶相容数据.
+
+#theorem(title: [余交换 Hopf 代数的模范畴])[
+  若 $H$ 余交换, 则 $Mod_H$ 典范成为对称幺半无穷范畴. 对两个左模 $M,N$, 张量积定义为
+  $ M times.o_Delta N:=op("Res")_Delta (M times.o N) $
+  这里 $M times.o N$ 先带有外部的 $H times.o H$-作用, 再沿代数态射 $Delta:H->H times.o H$ 限制标量. 单位为
+  $ bold(1)_epsilon:=op("Res")_epsilon (bold(1)) $
+  即通过余单位 $epsilon:H->bold(1)$ 获得作用的底层张量单位.
+
+  忘却函子是强对称幺半函子
+  $ U:(Mod_H,times.o_Delta,bold(1)_epsilon)
+    ->(cal(C),times.o,bold(1)) $
+] <thm-hopf-module-symmetric-monoidal>
+
+#proof[
+  *先构造作用.* $M times.o N$ 上的 $H$-作用是复合
+  $ H times.o M times.o N
+    stretch(->)^(Delta times.o id_M times.o id_N)
+    H times.o H times.o M times.o N $
+  $ tilde.eq (H times.o M) times.o (H times.o N)
+    stretch(->)^(rho_M times.o rho_N) M times.o N $
+  中间的等价交换第二个 $H$ 与 $M$. 两个模的外部张量积是 $H times.o H$-模, 而 $Delta$ 保持乘法与单位, 因而限制标量后确实得到 $H$-模. 这也解释了为什么必须使用双代数相容性.
+
+  对模态射 $f:M->M'$ 和 $g:N->N'$, 底层态射 $f times.o g$ 保持上述作用. 外部张量积与限制标量本身都是无穷函子, 所以这个构造同时给出态射及其全部高阶同伦上的运算.
+
+  *再看结合与单位.* 在 $M times.o N times.o P$ 上, 两种加括号方式的作用分别通过
+  $ H stretch(->)^( (Delta times.o id) compose Delta) H^(times.o 3), quad
+    H stretch(->)^( (id times.o Delta) compose Delta) H^(times.o 3) $
+  给出. 余结合性将它们相容地识别, 因而底层结合同构提升为模的等价
+  $ (M times.o_Delta N) times.o_Delta P
+    tilde.eq M times.o_Delta (N times.o_Delta P) $
+  同样, 余单位律
+  $ (epsilon times.o id) compose Delta tilde.eq id_H
+    tilde.eq (id times.o epsilon) compose Delta $
+  使底层单位约束提升为
+  $ bold(1)_epsilon times.o_Delta M tilde.eq M
+    tilde.eq M times.o_Delta bold(1)_epsilon $
+
+  *余交换性给出对称约束.* 记底层交换映射为 $tau_(M,N):M times.o N->N times.o M$. 将上面的作用公式展开, 余交换同伦 $tau_(H,H) compose Delta tilde.eq Delta$ 给出
+  $ tau_(M,N) compose rho_(M times.o_Delta N)
+    tilde.eq rho_(N times.o_Delta M) compose (id_H times.o tau_(M,N)) $
+  因而 $tau_(M,N)$ 提升为 $H$-模等价 $M times.o_Delta N tilde.eq N times.o_Delta M$.
+
+  *最后检查全部相容性.* $H$ 的余交换结构给出相容的代数态射
+  $ Delta_r:H->H^(times.o r), quad r>=0, quad Delta_0=epsilon, quad Delta_1=id_H $
+  对任意有限族模, 定义其张量积为
+  $ op("Res")_(Delta_r)(M_1 times.o dots times.o M_r) $
+  这些运算对代入, 输入置换与单位的全部相容性, 正是 $Delta_r$ 的相容性和 $cal(C)$ 的对称幺半相容性所给出的. 因而它们组成真正的对称幺半无穷范畴结构. 忘掉作用后, 各个有限张量积与约束都恢复为 $cal(C)$ 中的相应构造, 所以 $U$ 强对称幺半.
+]
+
+例如当 $cal(C)=Mod_R$, 其中 $R$ 是交换环谱时, 上述张量积的底层对象是 $M times.o_R N$, 单位的底层对象是 $R$. 本节的 $times.o_Delta$ 使用底环 $R$ 上的张量积和 $Delta$ 给出的作用, 与相对张量积 $times.o_H$ 是不同的构造.
+
+对普通交换环 $k$ 上的余交换 Hopf 代数, 同一证明在普通模范畴中给出熟悉的公式
+$ h dot (m times.o n)=sum (h_((1)) m) times.o (h_((2)) n), quad
+  h dot a=epsilon(h) a quad (a in k) $
+
+#remark(title: [余交换假设的作用])[
+  取非交换有限群 $G$ 和域 $k$, 考虑函数 Hopf 代数 $H=k^G$. 它的模可以看作 $G$-分次向量空间. 记 $k_g$ 为集中在 $g$ 次的一维模, 则对角作用给出
+  $ k_g times.o_Delta k_h tilde.eq k_(g h), quad
+    k_h times.o_Delta k_g tilde.eq k_(h g) $
+  这是因为 $Delta(f)(g,h)=f(g h)$. 若 $g h!=h g$, 两个结果作为 $H$-模不同构, 所以这个张量积不能具有对称约束.
+
+  整个构造没有使用对极. 因此双代数已足以给出幺半结构, 余交换双代数已足以给出上述对称幺半结构.
+]
+
+=== 从表示到局部系统
+
+下面从普通模开始, 再把系数换成复形和谱. 每一步都使用同一个办法: 先取底层张量积, 再用余乘法同时作用在两个因子上.
+
+#example(title: [群表示])[
+  设 $k$ 是普通交换环, $G$ 是群. 一个 $k[G]$-模就是带 $G$-作用的 $k$-模. 由
+  $ Delta([g])=[g] times.o [g], quad epsilon([g])=1 $
+  得到表示的张量积
+  $ g dot (m times.o n)=(g dot m) times.o (g dot n) $
+  单位是平凡表示 $k$, 对称约束是 $m times.o n mapsto n times.o m$. 群 $G$ 可以不交换, 因为 $k[G]$ 总是余交换. 取平凡群, 就恢复普通 $k$-模的张量积.
+
+  特别地, $G=ZZ$ 时, $k[G]=k[t,t^(-1)]$. 模是带一个自同构的 $k$-模 $(M,T)$, 且
+  $ (M,T) times.o_Delta (N,U)=(M times.o_k N,T times.o U) $
+  单位为 $(k,id_k)$.
+]
+
+#example(title: [线性算子与 Lie 代数表示])[
+  设 $k$ 是普通交换环. 对 $H=k[t]$ 取加法余乘法
+  $ Delta(t)=t times.o 1+1 times.o t, quad epsilon(t)=0, quad S(t)=-t $
+  一个 $H$-模是带任意线性算子 $T$ 的 $k$-模 $M$. 此时
+  $ (M,T) times.o_Delta (N,U)
+    =(M times.o_k N,T times.o id_N+id_M times.o U) $
+  单位为 $(k,0)$. 例如两个一维模上的算子分别为标量 $a,b$, 张量积上的算子就是 $a+b$.
+
+  更一般地, 设 $k$ 是域, $frak(g)$ 是 Lie 代数. 包络代数 $U(frak(g))$ 是余交换 Hopf 代数, 对 $x in frak(g)$ 有
+  $ Delta(x)=x times.o 1+1 times.o x, quad epsilon(x)=0, quad S(x)=-x $
+  因而 Lie 代数表示的张量积满足 Leibniz 公式
+  $ x dot (m times.o n)=(x dot m) times.o n+m times.o (x dot n) $
+  单位是零作用的 $k$, 对称约束仍是交换两个因子. 一维交换 Lie 代数的包络代数就是前面的 $k[t]$. 参见 @EGNO-notes[例 1.24.1].
+]
+
+#example(title: [表示的复形])[
+  设 $k$ 是域, $G$ 是离散群. 将 $k[G]$-模换成模的复形, 再将拟同构取逆, 得到导出无穷范畴 $cal(D)(k[G])$. 对角作用仍然定义在底层 $k$ 上的导出张量积
+  $ M times.o_Delta N=M times.o_k^bb(L) N $
+  上. 因为 $k$ 是域, 可以直接用复形的张量积计算. 对 $m in M^p$, $n in N^q$, 微分与对称约束分别为
+  $ d(m times.o n)=d m times.o n+(-1)^p m times.o d n $
+  $ tau(m times.o n)=(-1)^(p q) n times.o m $
+  群作用仍是 $g(m times.o n)=g m times.o g n$, 单位是集中在零次的平凡表示 $k$. 群作用与微分相容, 而交换符号来自复形范畴本身的对称约束.
+
+  这给出稳定的对称幺半无穷范畴. 特别地, 对带平凡作用的移位有
+  $ k[p] times.o_Delta k[q] tilde.eq k[p+q] $
+  且交换 $k[1]$ 的两个因子得到 $-id_(k[2])$.
+]
+
+#example(title: [群环谱])[
+  设 $R$ 是交换环谱, $G$ 是生象中的群对象, 也就是群状 $EE_1$-空间. 定义
+  $ R[G]:=R smash Sigma_+^oo G $
+  群乘法与单位给出代数结构, 对角 $G->G times G$ 与映射 $G->*$ 给出余交换余代数结构, 取逆给出对极. 这些结构由强对称幺半函子 $R smash Sigma_+^oo (-)$ 从 $G$ 搬来, 所以 $R[G]$ 是 $Mod_R$ 中的余交换 Hopf 代数.
+
+  它的模就是带同伦相容 $G$-作用的 $R$-模谱. 更准确地, 有对称幺半等价
+  $ (Mod_(R[G]),times.o_Delta,R_epsilon)
+    tilde.eq (Fun(B G,Mod_R),times.o_"pt",R) $
+  右边的张量积逐点计算, 单位是值恒为 $R$ 的函子. 其底层仍是 $M times.o_R N$, 作用通过 $G$ 的对角给出.
+
+  可以从自由作用看出这个等价. 在 $B G$ 的基点取值, 得到忘却函子 $Fun(B G,Mod_R)->Mod_R$; 它的左伴随赋予自由 $G$-作用, 对应的单子是 $R[G] times.o_R -$. 取值检测等价并保持余极限, 所以单子性定理将右边识别为 $R[G]$-模. 逐点张量积的作用恰好使用同一个对角, 因而这个等价保持对称幺半结构.
+
+  取 $R=SS$, 就得到带同伦相容 $G$-作用的谱, 张量积是对角作用下的砸积. 取 $R=H k$ 且 $G$ 离散, 则 $R[G] tilde.eq H(k[G])$, 恢复上一个例子的导出表示.
+]
+
+#example(title: [空间上的局部系统])[
+  设 $R$ 是交换环谱, $X$ 是带基点 $x$ 的连通生象. 环路空间 $Omega_x X$ 是群状 $EE_1$-空间, 且 $B Omega_x X tilde.eq X$. 因而上一个例子给出
+  $ Mod_(R[Omega_x X]) tilde.eq Fun(X,Mod_R)=:cat("Loc")_R (X) $
+  右边称为 $X$ 上的 $R$-模局部系统范畴. 一个局部系统给每个点一个模谱, 给每条路径一个输运等价, 并记录路径同伦及其全部高阶相容性. 这个定义与逐点幺半结构可参见 @Hea22[定义 4.5].
+
+  对局部系统 $L,L'$, 张量积和单位是
+  $ (L times.o L')(y)=L(y) times.o_R L'(y), quad bold(1)(y)=R $
+  沿路径 $gamma:y->z$ 的输运为 $L(gamma) times.o_R L'(gamma)$. 在基点取纤维后, 一条环路同时作用在两个因子上, 正是 $R[Omega_x X]$ 的余乘法所给出的作用.
+
+  例如 $X=S^1$, 有 $Omega_x X tilde.eq ZZ$. 局部系统就是一个 $R$-模谱及其自同构, 张量积将两个自同构作张量, 与第一个例子相同. 对一般的 $X$, 环路空间还保留更高的同伦, 因而这个描述也包含普通基本群表示之外的局部系统.
+]

@@ -611,7 +611,10 @@
 #let Im = $op("im")$
 #let Coeq = $op("coeq")$
 #let res = $op("res")$
+#let char = $"char"$
 #let Eq = $op("Eq")$
+#let tr = "tr"
+#let rad = "rad"
 
 #let act = $arrow.half.cw$
 #let wedge = $or$
@@ -619,6 +622,11 @@
 #let coprod = $union.sq$
 #let semidirect = $\u{22ca}$
 #let pairarrow = $\u{21c9}$
+#let larr = $stretch(->)$
+#let smile = $op(smile)$
+#let veq = $#rotate(90deg, $=$)$
+#let vdeq = $#rotate(90deg, $=:$)$
+
 
 #let GL = $"GL"$
 #let SL = $"SL"$
@@ -655,6 +663,9 @@
 #let Spf = "Spf"
 #let CH = "CH"
 #let yo = "よ"
+
+#let gl = $frak("gl")$
+#let sl = $frak("sl")$
 
 #let Fun = $bold(sans("Fun"))$
 #let BiFun = $bold(sans("BiFun"))$
@@ -693,6 +704,7 @@
 #let Op = $bold(sans("Op"))$
 #let POp = $bold(sans("POp"))$
 #let Comm = $bold(sans("Comm"))$
+#let Assoc = $bold(sans("Assoc"))$
 #let Alg = $bold(sans("Alg"))$
 #let CAlg = $bold(sans("CAlg"))$
 #let Mon = $bold(sans("Mon"))$
@@ -700,6 +712,14 @@
 #let AlgSp = $bold(sans("AlgSp"))$
 #let DMSt = $bold(sans("DMSt"))$
 #let ArtSt = $bold(sans("ArtSt"))$
+#let LieAlg = $bold(sans("LieAlg"))$
+#let Vect = $bold(sans("Vect"))$
+#let Rep = $bold(sans("Rep"))$
+#let Lie = $bold(sans("Lie"))$
+
+#let ideal = $lt.closed$
+#let ad = $"ad"$
+
 
 #let cat(name) = $bold(sans(name))$
 
